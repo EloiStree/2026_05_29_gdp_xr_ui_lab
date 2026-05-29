@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://byjrt7xivaswl"]
+
+[ext_resource type="Script" uid="uid://2dx5vlrlpgwp" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit/ui_lab_run_code_edit_with_target_node.gd" id="1_4qv8k"]
+
+[node name="Control" type="Control" unique_id=805216708 node_paths=PackedStringArray("_code_edit", "_run_button", "_where_to_run_code")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4qv8k")
+_code_edit = NodePath("CodeEdit")
+_run_button = NodePath("HBoxContainer/Button Run")
+_where_to_run_code = NodePath(".")
+
+[node name="CodeEdit" type="CodeEdit" parent="." unique_id=899396559]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+text = "extends Node
+
+func _ready():
+	print(\"Hello World\")
+
+func _on_received_target(target:Node):
+	print(\"Target:\",target)
+
+	"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1542283459]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="Button Run" type="Button" parent="HBoxContainer" unique_id=1899765614]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " Run"
+autowrap_trim_flags = 192
