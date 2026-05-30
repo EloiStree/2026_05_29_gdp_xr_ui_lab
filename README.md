@@ -28,3 +28,4 @@ func get_front_wheel_right_distance()-> float
 func get_left_line_sensor_color()-> Color:
 func get_right_line_sensor_color()-> Color:
 ```
+<img width="1404" height="917" alt="image" src="https://github.com/user-attachments/assets/49860ef9-8e47-43b4-a536-f1f70d034676" />
