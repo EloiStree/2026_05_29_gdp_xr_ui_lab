@@ -16,3 +16,15 @@ You will find a RunCodeEdit prefab and a MiniTwoWheelsCar prefab here.
 
 Try to create a game and practice using the UI to control the car.   
 You can also experiment with adding, removing, or modifying the controls.  
+
+
+The only three methods given by default
+```
+func set_screen_128x64_to(array_1d_128x64:Array[bool]):
+func set_left_wheel_percent_power(percent_power11: float) -> void:
+func set_right_wheel_percent_power(percent_power11: float) -> void:
+func get_front_wheel_left_distance()-> float
+func get_front_wheel_right_distance()-> float
+func get_left_color()-> float
+func get_right_color()-> float
+```
