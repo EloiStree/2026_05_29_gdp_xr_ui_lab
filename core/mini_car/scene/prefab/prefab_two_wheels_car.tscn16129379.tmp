@@ -5,10 +5,8 @@
 [ext_resource type="ArrayMesh" uid="uid://c4yaceqej1pse" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/3d/wheel/ks_4036_wheel.obj" id="3_1h4fi"]
 [ext_resource type="Script" uid="uid://cm64w5a8e0hkp" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_static_map_to_double_color_bis.gd" id="3_poy45"]
 [ext_resource type="Script" uid="uid://c0kqwirf6pl84" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_128x64_display.gd" id="4_lvq4o"]
-[ext_resource type="Script" uid="uid://r24cj5kov3yr" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_set_wheel_rotation_from_angle.gd" id="4_pptyd"]
 [ext_resource type="Script" uid="uid://dfri7so5l56vl" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_set_color_mesh_surface.gd" id="5_poy45"]
-[ext_resource type="Script" uid="uid://c0fhyyuv2gcbf" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_follow_with_top_offset.gd" id="7_53jv7"]
-[ext_resource type="Script" uid="uid://co3jqywc008sv" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_sub_view_to_double_color.gd" id="8_ix454"]
+[ext_resource type="Script" uid="uid://dugjypiaykity" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/ui_lab_sub_get_color_with_subview.gd" id="7_53jv7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_poy45"]
 shading_mode = 0
@@ -46,14 +44,7 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_poy45"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_53jv7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pptyd"]
-resource_local_to_scene = true
-
-[sub_resource type="Environment" id="Environment_53jv7"]
-background_mode = 1
-background_color = Color(0, 0, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pptyd"]
 
 [node name="TwoWheelsCar" type="CharacterBody3D" unique_id=408629191 node_paths=PackedStringArray("_character_to_move", "_car_center_reference_node", "_left_wheel_reference_node", "_right_wheel_reference_node", "_right_wheel_top_radius_reference_node", "_raycast_front_left_wheel", "_raycast_front_right_wheel")]
 script = ExtResource("1_750so")
@@ -85,9 +76,7 @@ shape = SubResource("CylinderShape3D_mouek")
 [node name="RightWheelAnchor" type="Node3D" parent="." unique_id=1184617780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018, 0, 0)
 
-[node name="PivotAnchor" type="Node3D" parent="RightWheelAnchor" unique_id=646911282 node_paths=PackedStringArray("_pivot_to_rotate_localy")]
-script = ExtResource("4_pptyd")
-_pivot_to_rotate_localy = NodePath(".")
+[node name="PivotAnchor" type="Node3D" parent="RightWheelAnchor" unique_id=646911282]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="RightWheelAnchor/PivotAnchor" unique_id=1215018077]
 material_override = SubResource("StandardMaterial3D_tskdu")
@@ -108,9 +97,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.088963e-05, -0.016269324, 
 [node name="LeftWheelAnchor" type="Node3D" parent="." unique_id=34189644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018, 0, 0)
 
-[node name="PivotAnchor" type="Node3D" parent="LeftWheelAnchor" unique_id=1093643013 node_paths=PackedStringArray("_pivot_to_rotate_localy")]
-script = ExtResource("4_pptyd")
-_pivot_to_rotate_localy = NodePath(".")
+[node name="PivotAnchor" type="Node3D" parent="LeftWheelAnchor" unique_id=1093643013]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LeftWheelAnchor/PivotAnchor" unique_id=2023387898]
 material_override = SubResource("StandardMaterial3D_tskdu")
@@ -161,55 +148,4 @@ target = NodePath("..")
 metadata/_custom_type_script = "uid://dfri7so5l56vl"
 
 [node name="Screen128x64" type="MeshInstance3D" parent="Body" unique_id=1029294280]
-transform = Transform3D(0.026, 0, 0, 0, -0.011000632, 0.013854401, 0, -0.0069272006, -0.022001265, 0, 0.01226857, -0.011003175)
-material_override = SubResource("StandardMaterial3D_750so")
-mesh = SubResource("QuadMesh_lvq4o")
-
-[node name="ScreenHolder" type="MeshInstance3D" parent="Body/Screen128x64" unique_id=1690676436]
-transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 0.489, 0, -6.1118044e-10, -0.24750794)
-material_override = SubResource("StandardMaterial3D_1h4fi")
-mesh = SubResource("BoxMesh_poy45")
-
-[node name="CameraPosition" type="Node3D" parent="." unique_id=1949821170]
-transform = Transform3D(1, 0, 0, 0, -0.041788433, 0.9991265, 0, -0.9991265, -0.041788433, 0, 0.027, 0)
-
-[node name="CameraViewDebug" type="MeshInstance3D" parent="CameraPosition" unique_id=106694097]
-transform = Transform3D(0.04, 0, 0, 0, 0.037320904, -0.014392705, 0, 0.014392705, 0.037320904, 0, -0.03284711, -0.0062361564)
-visible = false
-mesh = SubResource("QuadMesh_53jv7")
-surface_material_override/0 = SubResource("ShaderMaterial_pptyd")
-
-[node name="SubViewport" type="SubViewport" parent="." unique_id=2019036867]
-size = Vector2i(16, 16)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=865718389]
-transform = Transform3D(1, 0, 0, 0, -0.041788433, 0.9991265, 0, -0.9991265, -0.041788433, 0, 0.027, 0)
-keep_aspect = 0
-environment = SubResource("Environment_53jv7")
-projection = 1
-current = true
-size = 0.05
-near = 0.001
-far = 1.0
-
-[node name="SubCameraFollowAnchorPosition" type="Node" parent="SubViewport/Camera3D" unique_id=1732760855 node_paths=PackedStringArray("what_to_follow", "what_to_move")]
-script = ExtResource("7_53jv7")
-what_to_follow = NodePath("../../../CameraPosition")
-what_to_move = NodePath("..")
-
-[node name="UiLabSubViewToDoubleColor" type="Node" parent="SubViewport/Camera3D" unique_id=539026263 node_paths=PackedStringArray("subviewport")]
-script = ExtResource("8_ix454")
-subviewport = NodePath("../..")
-metadata/_custom_type_script = "uid://co3jqywc008sv"
-
-[connection signal="on_left_line_sensor_color_updated" from="." to="Body/Offset/LineColor/TextureColorLeft/Set Color Mesh Left" method="set_color"]
-[connection signal="on_left_wheel_current_rotation_updated" from="." to="LeftWheelAnchor/PivotAnchor" method="set_current_angle_and_update"]
-[connection signal="on_right_line_sensor_color_updated" from="." to="Body/Offset/LineColor/TextureColorRight/Set Color Mesh Right" method="set_color"]
-[connection signal="on_right_wheel_current_rotation_updated" from="." to="RightWheelAnchor/PivotAnchor" method="set_current_angle_and_update"]
-[connection signal="on_screen_display_128x64_update_request" from="." to="Code/UiLab128x64Display" method="set_texture_with_boolean_array"]
-[connection signal="on_texture_material_updated" from="Code/UiLab128x64Display" to="Body/Screen128x64" method="set_surface_override_material"]
-[connection signal="on_left_sensor_updated" from="Code/UiLabStaticMapToDoubleColor" to="." method="set_left_line_sensor_color"]
-[connection signal="on_right_sensor_updated" from="Code/UiLabStaticMapToDoubleColor" to="." method="set_right_line_sensor_color"]
-[connection signal="on_left_color_updated" from="SubViewport/Camera3D/UiLabSubViewToDoubleColor" to="." method="set_left_line_sensor_color"]
-[connection signal="on_right_color_updated" from="SubViewport/Camera3D/UiLabSubViewToDoubleColor" to="." method="set_right_line_sensor_color"]
+transform = Transform3D(0.026, 0, 0, 0, -0.011000632, 0.013854401, 0, -0.0069272006, -0.022001265, 0, 0.01226857, -0.011003175

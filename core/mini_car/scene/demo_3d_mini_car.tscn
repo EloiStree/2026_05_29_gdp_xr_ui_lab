@@ -11,7 +11,15 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1sxn"]
 albedo_texture = ExtResource("1_h5kcq")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_tskdu"]
+viewport_path = NodePath("TwoWheelsCar/SubViewport")
+
 [node name="Demo3dMiniCar" type="Node3D" unique_id=2088838590]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1289987194]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.0648976, 0.40185234, -0.60719955)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=770672871]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=732727327]
 
@@ -51,14 +59,14 @@ offset_top = 1.0
 offset_right = 86.0
 offset_bottom = 41.0
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1289987194]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5008668, -3.550316e-08)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=770672871]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1628855657]
+offset_left = 157.0
+offset_top = 44.0
+offset_right = 197.0
+offset_bottom = 84.0
+texture = SubResource("ViewportTexture_tskdu")
 
 [connection signal="on_color_left_updated" from="MeshMap/UiLabQuadNodeToSurfaceColor" to="CanvasLayer/ColorRect" method="set_color"]
 [connection signal="on_color_right_updated" from="MeshMap/UiLabQuadNodeToSurfaceColor" to="CanvasLayer/ColorRect2" method="set_color"]
 [connection signal="on_left_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/ColorRect" method="set_color"]
 [connection signal="on_right_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/ColorRect2" method="set_color"]
-
-[editable path="TwoWheelsCar"]
