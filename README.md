@@ -20,12 +20,17 @@ You can also experiment with adding, removing, or modifying the controls.
 
 **Method you can use to move the car:**
 ```
-func set_screen_128x64_to(array_1d_128x64:Array[bool]):
+func set_wheels(left:float,right:float):
 func set_left_wheel_percent_power(percent_power11: float) -> void:
 func set_right_wheel_percent_power(percent_power11: float) -> void:
 func get_front_wheel_left_distance()-> float
 func get_front_wheel_right_distance()-> float
 func get_left_line_sensor_color()-> Color:
 func get_right_line_sensor_color()-> Color:
+
+func set_screen_128x64_to(array_1d_128x64:Array[bool]):
+func print_text(array:Array[bool], text:String, letter_color:bool=true, use_background:bool=true, top_left_text_corner:Vector2i=Vector2i.ZERO):
+
 ```
 <img width="1404" height="917" alt="image" src="https://github.com/user-attachments/assets/49860ef9-8e47-43b4-a536-f1f70d034676" />
+<img width="1145" height="643" alt="image" src="https://github.com/user-attachments/assets/a7f2d6ee-7d33-4c9c-941c-26c4916d8849" />
