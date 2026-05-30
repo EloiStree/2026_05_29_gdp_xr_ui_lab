@@ -19,7 +19,7 @@ You can also experiment with adding, removing, or modifying the controls.
 
 
 **Method you can use to move the car:**
-```
+``` gdscript
 func set_wheels(left:float,right:float):
 func set_left_wheel_percent_power(percent_power11: float) -> void:
 func set_right_wheel_percent_power(percent_power11: float) -> void:
