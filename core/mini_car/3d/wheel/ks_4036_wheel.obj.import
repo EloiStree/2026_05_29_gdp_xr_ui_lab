@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c4yaceqej1pse"
+path="res://.godot/imported/ks_4036_wheel.obj-73f9776685389f426eb284eb26d94f72.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ks_4036_wheel.obj-73f9776685389f426eb284eb26d94f72.mesh"]
+
+source_file="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/3d/wheel/ks_4036_wheel.obj"
+dest_files=["res://.godot/imported/ks_4036_wheel.obj-73f9776685389f426eb284eb26d94f72.mesh", "res://.godot/imported/ks_4036_wheel.obj-73f9776685389f426eb284eb26d94f72.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

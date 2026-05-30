@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://lylnr64rs4cm"]
+
+[ext_resource type="PackedScene" uid="uid://dm2s0fx0slyp4" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/prefab_two_wheels_car.tscn" id="1_04e8b"]
+[ext_resource type="Texture2D" uid="uid://bagoc04i4xpmf" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/2d/rust_ground.jpg" id="2_h5kcq"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u1sxn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1sxn"]
+albedo_color = Color(0.41336122, 0.7184014, 3.85046e-07, 1)
+albedo_texture = ExtResource("2_h5kcq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fn6ct"]
+
+[sub_resource type="GDScript" id="GDScript_h5kcq"]
+
+[node name="Demo3dMiniCar" type="Node3D" unique_id=2088838590]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=732727327]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=6443028]
+shape = SubResource("WorldBoundaryShape3D_u1sxn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1876751621]
+material_override = SubResource("StandardMaterial3D_u1sxn")
+mesh = SubResource("PlaneMesh_fn6ct")
+
+[node name="UiLabTextureQuadMesh" type="Node" parent="MeshInstance3D" unique_id=1547728074]
+script = SubResource("GDScript_h5kcq")
+
+[node name="DownLeft" type="Node3D" parent="MeshInstance3D" unique_id=1984953446]
+
+[node name="TopRight" type="Node3D" parent="MeshInstance3D" unique_id=1455114808]
+
+[node name="TwoWheelsCar" parent="." unique_id=408629191 instance=ExtResource("1_04e8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022816386, 0)

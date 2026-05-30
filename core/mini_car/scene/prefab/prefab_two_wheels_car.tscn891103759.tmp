@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://dm2s0fx0slyp4"]
+
+[ext_resource type="Script" uid="uid://cj5ohf2gihgfc" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_two_wheels_mini_car.gd" id="1_750so"]
+[ext_resource type="Texture2D" uid="uid://byyxs3hu0327k" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/3d/wheel/ks_4036_wheel_uv_color.png" id="2_lvq4o"]
+[ext_resource type="ArrayMesh" uid="uid://c4yaceqej1pse" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/3d/wheel/ks_4036_wheel.obj" id="3_1h4fi"]
+[ext_resource type="Script" uid="uid://c3rojpprdohal" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_color_hit_raycast.gd" id="4_1h4fi"]
+[ext_resource type="Script" uid="uid://c0kqwirf6pl84" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_128x64_display.gd" id="4_lvq4o"]
+[ext_resource type="Script" uid="uid://dfri7so5l56vl" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_set_color_mesh_surface.gd" id="5_poy45"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mouek"]
+height = 0.041900635
+radius = 0.016601563
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tskdu"]
+albedo_texture = ExtResource("2_lvq4o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1sxn"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o67sq"]
+material = SubResource("StandardMaterial3D_u1sxn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fn6ct"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1h4fi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix454"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53jv7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_750so"]
+albedo_color = Color(0.9366319, 0.48166162, 7.70092e-07, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lvq4o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h4fi"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_poy45"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_poy45"]
+shading_mode = 0
+
+[node name="TwoWheelsCar" type="CharacterBody3D" unique_id=408629191 node_paths=PackedStringArray("_character_to_move", "_car_center_reference_node", "_left_wheel_reference_node", "_right_wheel_reference_node", "_right_wheel_top_radius_reference_node", "_raycast_front_left_wheel", "_raycast_front_right_wheel")]
+script = ExtResource("1_750so")
+_character_to_move = NodePath(".")
+_car_center_reference_node = NodePath(".")
+_left_wheel_reference_node = NodePath("LeftWheelAnchor")
+_right_wheel_reference_node = NodePath("RightWheelAnchor")
+_right_wheel_top_radius_reference_node = NodePath("RightWheelAnchor/RadiusAnchor")
+_raycast_front_left_wheel = NodePath("LeftWheelAnchor/RayCast3DFront")
+_raycast_front_right_wheel = NodePath("RightWheelAnchor/RayCastFront")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1361979393]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -7.6293945e-05, 3.3349122e-12, 0)
+shape = SubResource("CylinderShape3D_mouek")
+
+[node name="RightWheelAnchor" type="Node3D" parent="." unique_id=1184617780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018, 0, 0)
+
+[node name="PivotAnchor" type="Node3D" parent="RightWheelAnchor" unique_id=646911282]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RightWheelAnchor/PivotAnchor" unique_id=1215018077]
+material_override = SubResource("StandardMaterial3D_tskdu")
+mesh = ExtResource("3_1h4fi")
+
+[node name="RadiusAnchor" type="Node3D" parent="RightWheelAnchor" unique_id=1056425973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01562658, 0)
+
+[node name="RayCastFront" type="RayCast3D" parent="RightWheelAnchor" unique_id=1936907808]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 7.399409e-10, -0.016927874)
+target_position = Vector3(0, -20, 0)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="UiLabColorHitRaycast" type="RayCast3D" parent="RightWheelAnchor" unique_id=305583660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.017177839, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+script = ExtResource("4_1h4fi")
+last_color = Color(1, 1, 1, 0)
+last_mesh_color = null
+last_geometry_color = null
+last_surface_color = null
+no_color_found_value = null
+metadata/_custom_type_script = "uid://c3rojpprdohal"
+
+[node name="LeftWheelAnchor" type="Node3D" parent="." unique_id=34189644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018, 0, 0)
+
+[node name="PivotAnchor" type="Node3D" parent="LeftWheelAnchor" unique_id=1093643013]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftWheelAnchor/PivotAnchor" unique_id=2023387898]
+material_override = SubResource("StandardMaterial3D_tskdu")
+mesh = ExtResource("3_1h4fi")
+
+[node name="RayCast3DFront" type="RayCast3D" parent="LeftWheelAnchor" unique_id=1407249980]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.017)
+target_position = Vector3(0, -20, 0)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="UiLabColorHitRaycast" type="RayCast3D" parent="LeftWheelAnchor" unique_id=587559184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.017177839, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+script = ExtResource("4_1h4fi")
+last_color = Color(1, 1, 1, 0)
+last_mesh_color = null
+last_geometry_color = null
+last_surface_color = null
+no_color_found_value = null
+metadata/_custom_type_script = "uid://c3rojpprdohal"
+
+[node name="Body" type="Node3D" parent="." unique_id=348548437]
+
+[node name="Offset" type="Node3D" parent="Body" unique_id=657271239]
+
+[node name="Body" type="MeshInstance3D" parent="Body/Offset" unique_id=938210667]
+transform = Transform3D(-1.3113416e-09, -0.013929654, 0, 0.03, -6.088845e-10, 0, 0, 0, 0.03, 0, 0, 0)
+mesh = SubResource("CylinderMesh_o67sq")
+surface_material_override/0 = SubResource("StandardMaterial3D_fn6ct")
+
+[node name="Back" type="MeshInstance3D" parent="Body/Offset" unique_id=1292983823]
+transform = Transform3D(-8.7422775e-10, -0.011853734, 0, 0.02, -5.181431e-10, 0, 0, 0, 0.02, 0, -0.006098181, 0.0094437525)
+mesh = SubResource("CylinderMesh_o67sq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/Offset" unique_id=1594521723]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, -0.011934631, 0.015350722, 0)
+mesh = SubResource("BoxMesh_1h4fi")
+surface_material_override/0 = SubResource("StandardMaterial3D_ix454")
+
+[node name="UiLabSetColorMeshSurface" type="Node" parent="Body/Offset/MeshInstance3D" unique_id=1833347188 node_paths=PackedStringArray("target")]
+script = ExtResource("5_poy45")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://dfri7so5l56vl"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body/Offset" unique_id=1128401555]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, 0.012209056, 0.015350722, 0)
+mesh = SubResource("BoxMesh_1h4fi")
+surface_material_override/0 = SubResource("StandardMaterial3D_53jv7")
+
+[node name="UiLabSetColorMeshSurface" type="Node" parent="Body/Offset/MeshInstance3D2" unique_id=1321387175 node_paths=PackedStringArray("target")]
+script = ExtResource("5_poy45")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://dfri7so5l56vl"
+
+[node name="Screen128x64" type="MeshInstance3D" parent="Body" unique_id=1029294280]
+transform = Transform3D(0.026, 0, 0, 0, -0.011000632, 0.013854401, 0, -0.0069272006, -0.022001265, 0, 0.01226857, -0.011003175)
+material_override = SubResource("StandardMaterial3D_750so")
+mesh = SubResource("QuadMesh_lvq4o")
+
+[node name="ScreenHolder" type="MeshInstance3D" parent="Body/Screen128x64" unique_id=1690676436]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 0.489, 0, -6.1118044e-10, -0.24750794)
+material_override = SubResource("StandardMaterial3D_1h4fi")
+mesh = SubResource("BoxMesh_poy45")
+
+[node name="UiLab128x64Display" type="Node" parent="Body/Screen128x64" unique_id=1762865014]
+script = ExtResource("4_lvq4o")
+material_to_duplicate = SubResource("StandardMaterial3D_poy45")
+metadata/_custom_type_script = "uid://c0kqwirf6pl84"
+
+[connection signal="on_screen_display_128x64_update_request" from="." to="Body/Screen128x64/UiLab128x64Display" method="set_texture_with_boolean_array"]
+[connection signal="on_color_updated" from="RightWheelAnchor/UiLabColorHitRaycast" to="Body/Offset/MeshInstance3D2/UiLabSetColorMeshSurface" method="set_color"]
+[connection signal="on_color_updated" from="LeftWheelAnchor/UiLabColorHitRaycast" to="Body/Offset/MeshInstance3D/UiLabSetColorMeshSurface" method="set_color"]
+[connection signal="on_texture_material_updated" from="Body/Screen128x64/UiLab128x64Display" to="Body/Screen128x64" method="set_surface_override_material"]

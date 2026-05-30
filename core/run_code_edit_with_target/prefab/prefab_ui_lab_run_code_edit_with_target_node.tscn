@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://byjrt7xivaswl"]
+
+[ext_resource type="Script" uid="uid://2dx5vlrlpgwp" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_run_code_edit_with_target_node.gd" id="1_4qv8k"]
+
+[node name="RunCodeEditWithTarget" type="Control" unique_id=805216708 node_paths=PackedStringArray("_code_edit", "_run_button", "_stop_button", "_where_to_run_code")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4qv8k")
+_code_edit = NodePath("CodeEdit")
+_run_button = NodePath("HBoxContainer/Button Run")
+_stop_button = NodePath("HBoxContainer/Button Stop")
+_where_to_run_code = NodePath(".")
+
+[node name="CodeEdit" type="CodeEdit" parent="." unique_id=899396559]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+text = "extends Node
+
+func _ready():
+	print(\"Hello World\")
+
+func _on_received_target(target:Node):
+	print(\"Target:\",target)
+
+	"
+indent_wrapped_lines = true
+scroll_smooth = true
+minimap_draw = true
+caret_blink = true
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+symbol_lookup_on_click = true
+symbol_tooltip_on_hover = true
+line_folding = true
+gutters_draw_breakpoints_gutter = true
+gutters_draw_bookmarks = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_line_numbers_min_digits = 4
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1542283459]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="Button Stop" type="Button" parent="HBoxContainer" unique_id=1324732899]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stop"
+autowrap_trim_flags = 192
+
+[node name="Button Run" type="Button" parent="HBoxContainer" unique_id=1899765614]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " Run"
+autowrap_trim_flags = 192
