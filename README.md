@@ -35,7 +35,10 @@ You have a code editor to run code:
 
 And a mini car to move:   
 `UiLabTwoWheelsMiniCar` → `prefab_two_wheels_car.tscn`   
-
+  
+Not that you will most likely need a primitive parse:  
+`UiLabPrimitiveToString`   
+  
 ---
 
 ### Workshop
