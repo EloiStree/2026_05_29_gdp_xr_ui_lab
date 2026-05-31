@@ -13,6 +13,11 @@ signal on_screen_display_128x64_set_request(array_1d_128x64:Array[bool])
 signal on_screen_display_128x64_print_request(array:Array[bool], text:String, letter_color:bool, use_background:bool, top_left_text_corner:Vector2i)
 signal on_color_request_for_the_car_style(color_to_apply:Color)
 
+signal on_position_updated(new_position: Vector3)
+signal on_rotation_quaternion_updated(new_rotation: Quaternion)
+signal on_rotation_euler_updated(new_rotation: Vector3)
+signal on_car_id_updated(new_car_id: int)
+
 
 func set_car_color(color:Color):
 	var color_no_alpha :Color = Color(color.r,color.g,color.b,1)
@@ -54,6 +59,10 @@ func print_text(array:Array[bool], text:String, letter_color:bool=true, use_back
 
 @export var _left_rotation_in_degree_total: float = 0.0
 @export var _right_rotation_in_degree_total: float = 0.0
+@export var _car_id: int = 0
+@export var _car_position: Vector3 = Vector3.ZERO
+@export var _car_rotation: Quaternion = Quaternion.IDENTITY
+@export var _car_euler: Vector3 = Vector3.ZERO
 
 
 # Internal state
@@ -245,6 +254,7 @@ func _physics_process(delta: float) -> void:
 	if not _character_to_move:
 		return
 
+
 	refresh_wheel_parameters()
 	
 	# ROBOT CONTROL AND ODEMTRY CALCULATIONS
@@ -294,6 +304,15 @@ func _physics_process(delta: float) -> void:
 	
 	on_left_wheel_current_rotation_updated.emit(_left_rotation_in_degree_total)
 	on_right_wheel_current_rotation_updated.emit(_right_rotation_in_degree_total)
+
+	_car_id = get_instance_id()
+	_car_position = get_car_position()
+	_car_rotation = get_car_rotation()
+	_car_euler = get_car_euler()
+	on_position_updated.emit(_car_position)
+	on_rotation_quaternion_updated.emit(_car_rotation)
+	on_rotation_euler_updated.emit(_car_euler)
+	on_car_id_updated.emit(_car_id)
 
 
 func set_motor_left_foward_on() -> void:
@@ -371,6 +390,8 @@ func get_distance_from_raycast(raycast: RayCast3D) -> float:
 	else:
 		return 0.0  
 		
+
+
 func get_car_id()->int:
 	return get_instance_id()
 	
