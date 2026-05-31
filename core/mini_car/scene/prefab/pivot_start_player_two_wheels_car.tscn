@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://bqxuqwotyhjef"]
+
+[ext_resource type="Script" uid="uid://dqlgebqm04iy8" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_code_to_load_relay_3d.gd" id="1_ijsul"]
+[ext_resource type="PackedScene" uid="uid://dm2s0fx0slyp4" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/prefab_two_wheels_car.tscn" id="2_qqphe"]
+[ext_resource type="Script" uid="uid://3oy443omr1x1" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/web_page_to_target/ui_lab_run_code_with_target.gd" id="3_uh6wm"]
+[ext_resource type="Script" uid="uid://j0ypqbayu7qk" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_web_page_downloader.gd" id="4_jruq6"]
+
+[node name="PivotStartPlayer" type="Node3D" unique_id=1896884400]
+script = ExtResource("1_ijsul")
+_code_received = "extends Node
+
+var car: Node
+var target_light: Node = null
+var following_light := false
+var search_mode := true
+var random_direction := 1.0
+var random_timer := 0.0
+var random_duration := 0.0
+
+func _ready():
+	print(\"Green Light Follower Ready\")
+
+func _physics_process(delta):
+	if !car:
+		return
+	
+	# Update random movement timer
+	if random_timer > 0:
+		random_timer -= delta
+	
+	if following_light and target_light:
+		follow_light()
+	else:
+		search_for_green_light()
+
+func _on_received_target(target: Node):
+	print(\"Target:\", target)
+	car = target
+
+func search_for_green_light():
+	# Use line sensors to search for green light path
+	var left_color: Color = car.get_left_line_sensor_color()
+	var right_color: Color = car.get_right_line_sensor_color()
+	
+	var left_green := is_green(left_color)
+	var right_green := is_green(right_color)
+	
+	if left_green and right_green:
+		# Centered on the green line/path
+		car.set_wheels(0.8, 0.8)
+		
+		# Check if this might be the light source
+		var light_strength = max(left_color.g, right_color.g)
+		if light_strength > 0.8:
+			following_light = true
+			target_light = car  # Following the green light path
+			
+	elif left_green:
+		# Green is under left sensor - turn left to follow
+		car.set_wheels(0.3, 0.8)
+		
+	elif right_green:
+		# Green is under right sensor - turn right to follow
+		car.set_wheels(0.8, 0.3)
+		
+	else:
+		# No green found - move randomly
+		move_randomly()
+
+func move_randomly():
+	# Generate new random direction periodically
+	if random_timer <= 0:
+		random_direction = randf_range(-1.0, 1.0)
+		random_duration = randf_range(0.5, 2.0)
+		random_timer = random_duration
+	
+	# Apply random movement
+	var left_speed: float
+	var right_speed: float
+	
+	if random_direction > 0:
+		# Move forward with a turn
+		left_speed = 0.5
+		right_speed = 0.5 - random_direction * 0.5
+	else:
+		# Move forward with opposite turn
+		left_speed = 0.5 + random_direction * 0.5
+		right_speed = 0.5
+	
+	# Occasionally reverse direction for more exploration
+	if randf() < 0.02:  # 2% chance per frame to reverse
+		left_speed = -0.3
+		right_speed = -0.3
+	
+	car.set_wheels(left_speed, right_speed)
+
+func follow_light():
+	# More aggressive following when we've found the light
+	var left_color: Color = car.get_left_line_sensor_color()
+	var right_color: Color = car.get_right_line_sensor_color()
+	var front_color: Color = car.get_front_sensor_color() if car.has_method(\"get_front_sensor_color\") else Color.BLACK
+	
+	var left_green := is_green(left_color)
+	var right_green := is_green(right_color)
+	var front_green := is_green(front_color) if car.has_method(\"get_front_sensor_color\") else false
+	
+	if front_green and (left_green or right_green):
+		# Moving straight toward the light
+		car.set_wheels(1.0, 1.0)
+		
+		# Check if we've reached the light source
+		if get_light_intensity(front_color) > 0.9:
+			print(\"Reached the green light!\")
+			car.set_wheels(0.0, 0.0)
+			
+	elif left_green and right_green:
+		# Centered on the green path
+		car.set_wheels(0.9, 0.9)
+		
+	elif left_green:
+		# Light/path is to the left
+		car.set_wheels(0.2, 0.9)
+		
+	elif right_green:
+		# Light/path is to the right
+		car.set_wheels(0.9, 0.2)
+		
+	else:
+		# Lost the light, go back to search mode
+		following_light = false
+		target_light = null
+		search_mode = true
+
+func is_green(c: Color) -> bool:
+	# Returns true if the color is predominantly green
+	return c.g > 0.6 and c.g > c.r and c.g > c.b
+
+func get_light_intensity(c: Color) -> float:
+	# Calculate the intensity/distance of the light based on green channel strength
+	return c.g"
+
+[node name="CarSpot" type="Node3D" parent="." unique_id=3736774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.42289346)
+
+[node name="TwoWheelsCar" parent="CarSpot" unique_id=408629191 instance=ExtResource("2_qqphe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.01938891, 0)
+
+[node name="UiLabRunCodeWithTarget" type="Node" parent="CarSpot" unique_id=1896264871 node_paths=PackedStringArray("_target_node", "_where_to_run_code")]
+script = ExtResource("3_uh6wm")
+_target_node = NodePath("../TwoWheelsCar")
+_load_cdoet_at_ready = false
+_where_to_run_code = NodePath("../TwoWheelsCar")
+metadata/_custom_type_script = "uid://3oy443omr1x1"
+
+[node name="UiLabWebPageDownloader" type="Node" parent="CarSpot/UiLabRunCodeWithTarget" unique_id=1744112561]
+script = ExtResource("4_jruq6")
+metadata/_custom_type_script = "uid://j0ypqbayu7qk"
+
+[connection signal="on_code_to_relay_received" from="." to="CarSpot/UiLabRunCodeWithTarget" method="set_code_in_code_edit_and_reload"]
+[connection signal="on_url_to_handle_by_third_party_script_detected" from="CarSpot/UiLabRunCodeWithTarget" to="CarSpot/UiLabRunCodeWithTarget/UiLabWebPageDownloader" method="set_web_page_and_download_directly"]
+[connection signal="on_text_downloaded" from="CarSpot/UiLabRunCodeWithTarget/UiLabWebPageDownloader" to="CarSpot/UiLabRunCodeWithTarget" method="set_code_in_code_edit_and_reload"]

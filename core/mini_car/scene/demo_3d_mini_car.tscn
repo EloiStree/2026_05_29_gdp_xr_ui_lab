@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://lylnr64rs4cm"]
+[gd_scene format=3 uid="uid://dvq5rhgqa27o"]
 
-[ext_resource type="PackedScene" uid="uid://dm2s0fx0slyp4" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/prefab_two_wheels_car.tscn" id="1_04e8b"]
-[ext_resource type="Texture2D" uid="uid://doc56d62vhfe7" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/map/Map.png" id="1_h5kcq"]
-[ext_resource type="Script" uid="uid://dpg6opdbu6o88" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_if_red_teleport_to.gd" id="1_mouek"]
-[ext_resource type="Script" uid="uid://codjx4ebhy11r" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/ui_lab_quad_node_to_color.gd" id="2_u1sxn"]
-[ext_resource type="PackedScene" uid="uid://efcn16tp7apo" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/short_128x64/scene/prefab_short_128x64.tscn" id="4_fn6ct"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_tskdu"]
+[ext_resource type="Script" uid="uid://dpg6opdbu6o88" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_if_red_teleport_to.gd" id="1_uigua"]
+[ext_resource type="Script" uid="uid://bfy4c0jkmgi08" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_node_mirror_transform.gd" id="2_hu4id"]
+[ext_resource type="Script" uid="uid://bls3ss8xr7a4y" path="res://addons/2026_05_29_gdp_xr_ui_lab/unstored/ui_lab_main_target_in_scene.gd" id="2_o67sq"]
+[ext_resource type="Texture2D" uid="uid://doc56d62vhfe7" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/map/Map.png" id="3_ru5xq"]
+[ext_resource type="Script" uid="uid://codjx4ebhy11r" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/ui_lab_quad_node_to_color.gd" id="4_rpkl7"]
+[ext_resource type="PackedScene" uid="uid://dm2s0fx0slyp4" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/prefab_two_wheels_car.tscn" id="5_sajmv"]
+[ext_resource type="PackedScene" uid="uid://efcn16tp7apo" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/short_128x64/scene/prefab_short_128x64.tscn" id="6_p2qdi"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u1sxn"]
 
@@ -16,34 +16,15 @@ size = Vector3(2.991455, 1, 0.5155029)
 [sub_resource type="PlaneMesh" id="PlaneMesh_fn6ct"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1sxn"]
-albedo_texture = ExtResource("1_h5kcq")
+albedo_texture = ExtResource("3_ru5xq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tskdu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ua8wg"]
 resource_local_to_scene = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tskdu"]
 viewport_path = NodePath("TwoWheelsCar/SubViewport")
 
 [node name="Demo3dMiniCar" type="Node3D" unique_id=2088838590]
-
-[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=1967520398]
-
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1783596309]
-
-[node name="XRController3D" type="XRController3D" parent="XROrigin3D" unique_id=760672787]
-tracker = &"left_hand"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRController3D" unique_id=1553764406]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
-mesh = SubResource("BoxMesh_tskdu")
-
-[node name="XRController3D2" type="XRController3D" parent="XROrigin3D" unique_id=483733983]
-tracker = &"right_hand"
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/XRController3D2" unique_id=1173167457]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
-mesh = SubResource("BoxMesh_tskdu")
-skeleton = NodePath("../../XRController3D")
 
 [node name="AnchorInScene" type="Node3D" parent="." unique_id=1097079306]
 
@@ -53,10 +34,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14572263, 0)
 [node name="Code" type="Node" parent="." unique_id=146738558]
 
 [node name="UiLabIfRedTeleportTo" type="Node" parent="Code" unique_id=896148501 node_paths=PackedStringArray("target_to_teleport", "where_to_teleport")]
-script = ExtResource("1_mouek")
+script = ExtResource("1_uigua")
 target_to_teleport = NodePath("../../TwoWheelsCar")
 where_to_teleport = NodePath("../../AnchorInScene/Start")
 metadata/_custom_type_script = "uid://dpg6opdbu6o88"
+
+[node name="UiLabMainTargetInScene" type="Node" parent="Code" unique_id=1854182681 node_paths=PackedStringArray("_target")]
+script = ExtResource("2_o67sq")
+_target = NodePath("../../TwoWheelsCar")
+metadata/_custom_type_script = "uid://bls3ss8xr7a4y"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1289987194]
+transform = Transform3D(1, 0, 0, 0, 0.877774, 0.47907495, 0, -0.47907495, 0.877774, 0.0648976, 0.09483953, -0.49769154)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=770672871]
+
+[node name="UiLabNodeMirroTransform" type="Node" parent="Camera3D" unique_id=198514139 node_paths=PackedStringArray("what_to_follow", "what_to_move")]
+script = ExtResource("2_hu4id")
+what_to_follow = NodePath("../../TwoWheelsCar/DefaultCamera3DAnchorPoint")
+what_to_move = NodePath("..")
+metadata/_custom_type_script = "uid://bfy4c0jkmgi08"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=732727327]
 
@@ -104,18 +101,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="UiLabQuadNodeToSurfaceColor" type="Node" parent="MeshMap" unique_id=1721297315 node_paths=PackedStringArray("mesh_instance_as_quad", "down_left_anchor", "top_right_anchor")]
-script = ExtResource("2_u1sxn")
+script = ExtResource("4_rpkl7")
 mesh_instance_as_quad = NodePath("..")
 down_left_anchor = NodePath("../DownLeft")
 top_right_anchor = NodePath("../TopRight")
 
-[node name="TwoWheelsCar" parent="." unique_id=408629191 instance=ExtResource("1_04e8b")]
+[node name="TwoWheelsCar" parent="." unique_id=408629191 instance=ExtResource("5_sajmv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0648976, 0.022816386, -0.60719955)
 _left_wheel_percent_power = 0.25
 _right_wheel_percent_power = 0.30000000000000004
 
 [node name="CameraViewDebug" parent="TwoWheelsCar/CameraPosition" parent_id_path=PackedInt32Array(408629191, 1949821170) index="0" unique_id=106694097]
-surface_material_override/0 = SubResource("ShaderMaterial_tskdu")
+surface_material_override/0 = SubResource("ShaderMaterial_ua8wg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=574822094]
 
@@ -141,7 +138,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("ViewportTexture_tskdu")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=82323437]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/HBoxContainer" unique_id=809414844]
+layout_mode = 2
+ratio = 2.0
+
+[node name="TextureRectDebug" type="TextureRect" parent="CanvasLayer/HBoxContainer/AspectRatioContainer" unique_id=82323437]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("ViewportTexture_tskdu")
@@ -153,7 +154,7 @@ anchor_bottom = 1.0
 offset_right = 3.5519714
 offset_bottom = -4.0
 
-[node name="PrefabShort128x64" parent="CanvasLayer/Control" unique_id=525735575 instance=ExtResource("4_fn6ct")]
+[node name="PrefabShort128x64" parent="CanvasLayer/Control" unique_id=525735575 instance=ExtResource("6_p2qdi")]
 layout_mode = 1
 
 [node name="RunCodeEditWithTarget" parent="CanvasLayer/Control/PrefabShort128x64/Ratio Short 16x9/Hold16x9" parent_id_path=PackedInt32Array(525735575, 1083762807) index="0" unique_id=805216708 node_paths=PackedStringArray("_target_node")]
@@ -212,7 +213,7 @@ func randomize_array():
 [connection signal="on_left_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/HBoxContainer/ColorRect" method="set_color"]
 [connection signal="on_right_line_sensor_color_updated" from="TwoWheelsCar" to="Code/UiLabIfRedTeleportTo" method="check_color"]
 [connection signal="on_right_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/HBoxContainer/ColorRect2" method="set_color"]
-[connection signal="on_texture_updated" from="TwoWheelsCar/Code/UiLab128x64Display" to="CanvasLayer/HBoxContainer/TextureRect2" method="set_texture"]
+[connection signal="on_texture_updated" from="TwoWheelsCar/Code/UiLab128x64Display" to="CanvasLayer/HBoxContainer/AspectRatioContainer/TextureRectDebug" method="set_texture"]
 
 [editable path="TwoWheelsCar"]
 [editable path="CanvasLayer/Control/PrefabShort128x64"]

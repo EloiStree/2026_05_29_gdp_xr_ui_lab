@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cb4dissqv82xr"]
+
+[ext_resource type="Texture2D" uid="uid://doc56d62vhfe7" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/map/Map.png" id="1_m8mwi"]
+[ext_resource type="PackedScene" uid="uid://bqxuqwotyhjef" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/pivot_start_player_two_wheels_car.tscn" id="2_stpmr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_stpmr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra7wi"]
+albedo_texture = ExtResource("1_m8mwi")
+texture_filter = 1
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ra7wi"]
+
+[node name="DemoStudentsCode" type="Node3D" unique_id=1297326560]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1322759660]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.6582427, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1058959271]
+
+[node name="Center" type="Node3D" parent="." unique_id=1302180381]
+
+[node name="PivotStartPlayer" parent="Center" unique_id=1896884400 instance=ExtResource("2_stpmr")]
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/SE/hello_world.gd"
+
+[node name="PivotStartPlayer2" parent="Center" unique_id=2022103226 instance=ExtResource("2_stpmr")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/BB/hello_world.gd"
+
+[node name="PivotStartPlayer3" parent="Center" unique_id=902039176 instance=ExtResource("2_stpmr")]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/CN/hello_world.gd"
+
+[node name="PivotStartPlayer4" parent="Center" unique_id=1247373329 instance=ExtResource("2_stpmr")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/DF/hello_world.gd"
+
+[node name="PivotStartPlayer5" parent="Center" unique_id=2059425140 instance=ExtResource("2_stpmr")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/DG/hello_world.gd"
+
+[node name="PivotStartPlayer6" parent="Center" unique_id=1239698224 instance=ExtResource("2_stpmr")]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/EJ/hello_world.gd"
+
+[node name="PivotStartPlayer7" parent="Center" unique_id=1949333287 instance=ExtResource("2_stpmr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/FR/hello_world.gd"
+
+[node name="PivotStartPlayer8" parent="Center" unique_id=401638351 instance=ExtResource("2_stpmr")]
+transform = Transform3D(-0.8660254, 0, -0.49999997, 0, 1, 0, 0.49999997, 0, -0.8660254, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/ND/hello_world.gd"
+
+[node name="PivotStartPlayer9" parent="Center" unique_id=1986005035 instance=ExtResource("2_stpmr")]
+transform = Transform3D(-0.4999999, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.4999999, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/PL/hello_world.gd"
+
+[node name="PivotStartPlayer10" parent="Center" unique_id=1014831506 instance=ExtResource("2_stpmr")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/SC/hello_world.gd"
+
+[node name="PivotStartPlayer11" parent="Center" unique_id=496096715 instance=ExtResource("2_stpmr")]
+transform = Transform3D(0.4999999, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.4999999, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/EJI/hello_world.gd"
+
+[node name="PivotStartPlayer12" parent="Center" unique_id=1432632698 instance=ExtResource("2_stpmr")]
+transform = Transform3D(0.8660253, 0, -0.5000002, 0, 1, 0, 0.5000002, 0, 0.8660253, 0, 0, 0)
+_code_received = "https://github.com/ryoaspi/ToolCarsGodot/blob/main/_Main/Gist/TT/hello_world.gd"
+
+[node name="StudentArena" type="Node3D" parent="." unique_id=2113320416]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StudentArena" unique_id=1848977263]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.003144741, 0.0040109158, -0.001021862)
+mesh = SubResource("QuadMesh_stpmr")
+surface_material_override/0 = SubResource("StandardMaterial3D_ra7wi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StudentArena" unique_id=659785564]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StudentArena/StaticBody3D" unique_id=1738206639]
+shape = SubResource("WorldBoundaryShape3D_ra7wi")

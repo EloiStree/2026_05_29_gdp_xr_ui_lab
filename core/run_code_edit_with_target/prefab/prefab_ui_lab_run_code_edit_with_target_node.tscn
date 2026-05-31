@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://j0ypqbayu7qk" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_web_page_downloader.gd" id="2_ann84"]
 [ext_resource type="Script" uid="uid://gli0l3xvr201" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_clipboard_import.gd" id="2_bhib1"]
 [ext_resource type="Script" uid="uid://cy53rb5j1vt3" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_text_submit_at_ready.gd" id="3_u4lx0"]
-[ext_resource type="Script" uid="uid://ceuclxdp1b0y5" path="res://addons/2026_05_29_gdp_xr_ui_lab/unstored/UiLabLookForTarget.gd" id="4_r7dgg"]
 
 [node name="RunCodeEditWithTarget" type="Control" unique_id=805216708 node_paths=PackedStringArray("_code_edit", "_run_button", "_stop_button", "_where_to_run_code")]
 layout_mode = 3
@@ -106,10 +105,6 @@ func randomize_array():
 	draw()"
 metadata/_custom_type_script = "uid://cy53rb5j1vt3"
 
-[node name="UiLabLookForTarget" type="Node" parent="CodeEdit" unique_id=1824767397]
-script = ExtResource("4_r7dgg")
-metadata/_custom_type_script = "uid://ceuclxdp1b0y5"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1542283459]
 layout_mode = 1
 anchors_preset = -1
@@ -155,7 +150,6 @@ autowrap_trim_flags = 192
 [connection signal="on_url_to_handle_by_third_party_script_detected" from="." to="CodeEdit/UiLabWebPageDownloader" method="set_web_page_and_download_directly"]
 [connection signal="on_text_downloaded" from="CodeEdit/UiLabWebPageDownloader" to="." method="set_code_in_code_edit_without_reload"]
 [connection signal="on_text_submit" from="CodeEdit/UiLabTextSubmitAtReady" to="." method="set_code_in_code_edit_without_reload"]
-[connection signal="on_target_changed" from="CodeEdit/UiLabLookForTarget" to="." method="set_target_node"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonMoins" to="." method="reduce_text_size"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonPlus" to="." method="increase_text_size"]
 [connection signal="button_down" from="HBoxContainer/Button ClipIn" to="HBoxContainer/Button ClipIn/UiLabClipboardImport" method="import_from_clipboard"]

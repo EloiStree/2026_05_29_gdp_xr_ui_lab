@@ -11,7 +11,13 @@ signal on_left_wheel_current_rotation_updated(rotation_in_degree_total: float)
 signal on_right_wheel_current_rotation_updated(rotation_in_degree_total: float)
 signal on_screen_display_128x64_set_request(array_1d_128x64:Array[bool])
 signal on_screen_display_128x64_print_request(array:Array[bool], text:String, letter_color:bool, use_background:bool, top_left_text_corner:Vector2i)
+signal on_color_request_for_the_car_style(color_to_apply:Color)
 
+
+func set_car_color(color:Color):
+	var color_no_alpha :Color = Color(color.r,color.g,color.b,1)
+	on_color_request_for_the_car_style.emit(color_no_alpha)
+	
 ## I am a methode that if the screen is present relay the request of printing text in 6x8
 func print_text(array:Array[bool], text:String, letter_color:bool=true, use_background:bool=true, top_left_text_corner:Vector2i=Vector2i.ZERO):
 		on_screen_display_128x64_print_request.emit(
@@ -21,7 +27,6 @@ func print_text(array:Array[bool], text:String, letter_color:bool=true, use_back
 			use_background,
 			top_left_text_corner
 		)
-
 
 @export_range(-1.0, 1.0,0.0001) var _left_wheel_percent_power: float = 0.0
 @export_range(-1.0, 1.0,0.0001) var _right_wheel_percent_power: float = 0.0
@@ -37,6 +42,8 @@ func print_text(array:Array[bool], text:String, letter_color:bool=true, use_back
 
 @export var _raycast_front_left_wheel: RayCast3D
 @export var _raycast_front_right_wheel: RayCast3D
+@export var _car_center_ground_reference_node: Node3D
+@export var use_random_color_syle_at_ready:bool=true
 
 @export_group("Debug")
 @export var _distance_between_wheels_in_mm: float = 70.0
@@ -48,6 +55,7 @@ func print_text(array:Array[bool], text:String, letter_color:bool=true, use_back
 @export var _left_rotation_in_degree_total: float = 0.0
 @export var _right_rotation_in_degree_total: float = 0.0
 
+
 # Internal state
 var _distance_between_wheels_in_meter: float = 0.07
 
@@ -56,6 +64,9 @@ func _ready() -> void:
 	if not _character_to_move:
 		push_error("_character_to_move is not assigned!")
 		return
+	if use_random_color_syle_at_ready:
+		randomize()
+		set_car_color(Color(randi() % 256 / 255.0, randi() % 256 / 255.0, randi() % 256 / 255.0))
 	refresh_wheel_parameters()
 
 
@@ -285,10 +296,6 @@ func _physics_process(delta: float) -> void:
 	on_right_wheel_current_rotation_updated.emit(_right_rotation_in_degree_total)
 
 
-
-
-
-
 func set_motor_left_foward_on() -> void:
 	set_left_wheel_percent_power(1.0)
 
@@ -319,8 +326,6 @@ func set_motors_off() -> void:
 	
 #--------------------------------
 
-
-
 signal on_left_line_sensor_color_updated(new_color: Color)
 signal on_right_line_sensor_color_updated(new_color: Color)
 
@@ -329,7 +334,6 @@ signal on_right_line_sensor_color_updated(new_color: Color)
 @export var _color_under_left_color: Color = Color(0, 0, 0, 0)
 @export var _color_under_right_color: Color = Color(0, 0, 0, 0)
 
-@export var _car_center_ground_reference_node: Node3D
 
 
 func set_left_line_sensor_color(new_color: Color) -> void:
@@ -366,3 +370,15 @@ func get_distance_from_raycast(raycast: RayCast3D) -> float:
 		return raycast.get_collision_point().distance_to(raycast.global_transform.origin)
 	else:
 		return 0.0  
+		
+func get_car_id()->int:
+	return get_instance_id()
+	
+func get_car_position()->Vector3:
+	return _car_center_ground_reference_node.global_position
+	
+func get_car_rotation()->Quaternion:
+	return Quaternion.from_euler(_car_center_ground_reference_node.global_rotation)
+	
+func get_car_euler()->Vector3:
+	return _car_center_ground_reference_node.global_rotation

@@ -39,6 +39,9 @@ offset_top = 0.3139801
 _target_node = NodePath("../HoldDisplay2x1/RatioDisplay2x1/TextureRect128x64/UiLab128x64Display")
 _unique_code_file_name = "128x64_display.gd"
 
+[node name="UiLabLookForTarget" parent="Ratio Short 16x9/Hold16x9/RunCodeEditWithTarget/CodeEdit" parent_id_path=PackedInt32Array(805216708, 899396559) index="8" unique_id=1824767397]
+disable_script = true
+
 [node name="HoldDisplay2x1" type="Control" parent="Ratio Short 16x9/Hold16x9" unique_id=1663556393]
 layout_mode = 1
 anchor_right = 1.0040001
@@ -108,3 +111,5 @@ metadata/_custom_type_script = "uid://cy53rb5j1vt3"
 
 [connection signal="on_texture_updated" from="Ratio Short 16x9/Hold16x9/HoldDisplay2x1/RatioDisplay2x1/TextureRect128x64/UiLab128x64Display" to="Ratio Short 16x9/Hold16x9/HoldDisplay2x1/RatioDisplay2x1/TextureRect128x64" method="set_texture"]
 [connection signal="on_text_submit" from="Code/UiLabTextSubmitAtReady" to="Ratio Short 16x9/Hold16x9/RunCodeEditWithTarget" method="set_code_in_code_edit_without_reload"]
+
+[editable path="Ratio Short 16x9/Hold16x9/RunCodeEditWithTarget"]

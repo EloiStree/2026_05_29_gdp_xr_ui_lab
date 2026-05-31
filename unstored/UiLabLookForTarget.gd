@@ -3,6 +3,7 @@ extends Node
 
 signal on_target_changed(node:Node)
 
+@export var disable_script:bool=false
 @export var found_target: Node
 ## Look for exact name
 @export var node_exact_name:String ="MainTarget"
@@ -12,13 +13,14 @@ signal on_target_changed(node:Node)
 
 
 func _ready() -> void:
-	on_target_changed.emit(null)
+	if not disable_script:
+		on_target_changed.emit(null)
 	_target_monitor()
 
 
 func _target_monitor() -> void:
 	while true:
-		if found_target == null or !is_instance_valid(found_target):
+		if not disable_script and found_target == null or !is_instance_valid(found_target):
 			var looked=_find_target()
 			if looked!=found_target:
 				found_target=looked
