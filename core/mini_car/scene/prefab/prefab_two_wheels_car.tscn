@@ -51,10 +51,6 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pptyd"]
 resource_local_to_scene = true
 
-[sub_resource type="Environment" id="Environment_53jv7"]
-background_mode = 1
-background_color = Color(0, 0, 1, 1)
-
 [node name="TwoWheelsCar" type="CharacterBody3D" unique_id=408629191 node_paths=PackedStringArray("_character_to_move", "_car_center_reference_node", "_left_wheel_reference_node", "_right_wheel_reference_node", "_right_wheel_top_radius_reference_node", "_raycast_front_left_wheel", "_raycast_front_right_wheel")]
 script = ExtResource("1_750so")
 _character_to_move = NodePath(".")
@@ -186,7 +182,6 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=865718389]
 transform = Transform3D(1, 0, 0, 0, -0.041788433, 0.9991265, 0, -0.9991265, -0.041788433, 0, 0.027, 0)
 keep_aspect = 0
-environment = SubResource("Environment_53jv7")
 projection = 1
 current = true
 size = 0.05
