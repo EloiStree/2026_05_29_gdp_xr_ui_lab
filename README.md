@@ -32,7 +32,6 @@ func set_screen_128x64_to(array_1d_128x64:Array[bool]):
 func print_text(array:Array[bool], text:String, letter_color:bool=true, use_background:bool=true, top_left_text_corner:Vector2i=Vector2i.ZERO):
 
 func get_car_id()->int:
-
 func get_car_position()->Vector3:   
 func get_car_rotation()->Quaternion:   
 func get_car_euler()->Vector3:
