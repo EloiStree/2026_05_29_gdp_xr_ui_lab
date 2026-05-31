@@ -36,10 +36,10 @@ shading_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53jv7"]
 shading_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_750so"]
-albedo_color = Color(0.9366319, 0.48166162, 7.70092e-07, 1)
-
 [sub_resource type="QuadMesh" id="QuadMesh_lvq4o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_750so"]
+shading_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h4fi"]
 albedo_color = Color(0, 0, 0, 1)
@@ -161,9 +161,9 @@ target = NodePath("..")
 metadata/_custom_type_script = "uid://dfri7so5l56vl"
 
 [node name="Screen128x64" type="MeshInstance3D" parent="Body" unique_id=1029294280]
-transform = Transform3D(0.026, 0, 0, 0, -0.011000632, 0.013854401, 0, -0.0069272006, -0.022001265, 0, 0.01226857, -0.011003175)
-material_override = SubResource("StandardMaterial3D_750so")
+transform = Transform3D(-0.026, 1.1364961e-09, -1.110223e-16, 1.9234117e-09, 0.011000632, 0.013854398, 1.21119e-09, 0.0069271997, -0.022001263, 0, 0.01226857, -0.011003175)
 mesh = SubResource("QuadMesh_lvq4o")
+surface_material_override/0 = SubResource("StandardMaterial3D_750so")
 
 [node name="ScreenHolder" type="MeshInstance3D" parent="Body/Screen128x64" unique_id=1690676436]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 0.489, 0, -6.1118044e-10, -0.24750794)
@@ -203,11 +203,15 @@ script = ExtResource("8_ix454")
 subviewport = NodePath("../..")
 metadata/_custom_type_script = "uid://co3jqywc008sv"
 
+[node name="DefaultCamera3DAnchorPoint" type="Node3D" parent="." unique_id=1265816448]
+transform = Transform3D(1, 0, 0, 0, 0.877774, 0.47907495, 0, -0.47907495, 0.877774, 0, 0.103085265, 0.09255478)
+
 [connection signal="on_left_line_sensor_color_updated" from="." to="Body/Offset/LineColor/TextureColorLeft/Set Color Mesh Left" method="set_color"]
 [connection signal="on_left_wheel_current_rotation_updated" from="." to="LeftWheelAnchor/PivotAnchor" method="set_current_angle_and_update"]
 [connection signal="on_right_line_sensor_color_updated" from="." to="Body/Offset/LineColor/TextureColorRight/Set Color Mesh Right" method="set_color"]
 [connection signal="on_right_wheel_current_rotation_updated" from="." to="RightWheelAnchor/PivotAnchor" method="set_current_angle_and_update"]
-[connection signal="on_screen_display_128x64_update_request" from="." to="Code/UiLab128x64Display" method="set_texture_with_boolean_array"]
+[connection signal="on_screen_display_128x64_print_request" from="." to="Code/UiLab128x64Display" method="print_text"]
+[connection signal="on_screen_display_128x64_set_request" from="." to="Code/UiLab128x64Display" method="set_screen_128x64_to"]
 [connection signal="on_texture_material_updated" from="Code/UiLab128x64Display" to="Body/Screen128x64" method="set_surface_override_material"]
 [connection signal="on_left_sensor_updated" from="Code/UiLabStaticMapToDoubleColor" to="." method="set_left_line_sensor_color"]
 [connection signal="on_right_sensor_updated" from="Code/UiLabStaticMapToDoubleColor" to="." method="set_right_line_sensor_color"]

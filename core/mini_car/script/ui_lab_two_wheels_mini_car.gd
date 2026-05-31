@@ -9,7 +9,19 @@ signal on_left_wheel_degree_per_second_updated(degree_per_second: float)
 signal on_right_wheel_degree_per_second_updated(degree_per_second: float)
 signal on_left_wheel_current_rotation_updated(rotation_in_degree_total: float)
 signal on_right_wheel_current_rotation_updated(rotation_in_degree_total: float)
-signal on_screen_display_128x64_update_request(array_1d_128x64:Array[bool])
+signal on_screen_display_128x64_set_request(array_1d_128x64:Array[bool])
+signal on_screen_display_128x64_print_request(array:Array[bool], text:String, letter_color:bool, use_background:bool, top_left_text_corner:Vector2i)
+
+## I am a methode that if the screen is present relay the request of printing text in 6x8
+func print_text(array:Array[bool], text:String, letter_color:bool=true, use_background:bool=true, top_left_text_corner:Vector2i=Vector2i.ZERO):
+		on_screen_display_128x64_print_request.emit(
+			array,
+			text,
+			letter_color,
+			use_background,
+			top_left_text_corner
+		)
+
 
 @export_range(-1.0, 1.0,0.0001) var _left_wheel_percent_power: float = 0.0
 @export_range(-1.0, 1.0,0.0001) var _right_wheel_percent_power: float = 0.0
@@ -70,7 +82,8 @@ func refresh_wheel_parameters() -> void:
 ## where the texture is a 1D array of boolean values representing the pixels of the screen,
 ## Only works is designer did put a screen on the car.
 func set_screen_128x64_to(array_1d_128x64:Array[bool]):
-	on_screen_display_128x64_update_request.emit(array_1d_128x64)
+	on_screen_display_128x64_set_request.emit(array_1d_128x64)
+
 	
 ## Allows to control the motor speed of the left wheel from -1.0 to 1.0, where 1.0 is full forward, -1.0 is full backward, and 0.0 is stopped.
 func set_left_wheel_percent_power(percent_power: float) -> void:
@@ -207,7 +220,8 @@ func set_with_one_joystick(joystick_input: Vector2):
 	set_both_wheels_percent_power(left_wheel, right_wheel)
 
 
-
+func set_wheels(left_joystick:float, right_joystick:float)->void:
+	set_both_wheels_percent_power(left_joystick, right_joystick)
 
 ## I am a methode that allows to control the motor from two joystick input in Vector 2
 ## With only the y axis used for the movement, where the left joystick controls the left wheel and the right joystick controls the right wheel. Y axis is up for positive and down for negative, X axis is right for positive and left for negative.

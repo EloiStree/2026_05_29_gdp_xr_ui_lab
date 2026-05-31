@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://efcn16tp7apo"]
+
+[ext_resource type="PackedScene" uid="uid://byjrt7xivaswl" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/prefab/prefab_ui_lab_run_code_edit_with_target_node.tscn" id="1_ip0vn"]
+[ext_resource type="Script" uid="uid://c0kqwirf6pl84" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_128x64_display.gd" id="2_abn4i"]
+[ext_resource type="Script" uid="uid://cy53rb5j1vt3" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_text_submit_at_ready.gd" id="3_qwv4s"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_abn4i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwv4s"]
+shading_mode = 0
+
+[node name="PrefabShort128x64" type="Control" unique_id=525735575]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ratio Short 16x9" type="AspectRatioContainer" parent="." unique_id=1617717076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -4.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 0.5625
+
+[node name="Hold16x9" type="Control" parent="Ratio Short 16x9" unique_id=1083762807]
+layout_mode = 2
+
+[node name="RunCodeEditWithTarget" parent="Ratio Short 16x9/Hold16x9" unique_id=805216708 node_paths=PackedStringArray("_target_node") instance=ExtResource("1_ip0vn")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.28300002
+offset_top = 0.3139801
+_target_node = NodePath("../HoldDisplay2x1/RatioDisplay2x1/TextureRect128x64/UiLab128x64Display")
+_unique_code_file_name = "128x64_display.gd"
+
+[node name="HoldDisplay2x1" type="Control" parent="Ratio Short 16x9/Hold16x9" unique_id=1663556393]
+layout_mode = 1
+anchor_right = 1.0040001
+anchor_bottom = 0.282
+offset_right = -0.007019043
+offset_bottom = -0.044006348
+
+[node name="RatioDisplay2x1" type="AspectRatioContainer" parent="Ratio Short 16x9/Hold16x9/HoldDisplay2x1" unique_id=993949072]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 2.0
+
+[node name="TextureRect128x64" type="TextureRect" parent="Ratio Short 16x9/Hold16x9/HoldDisplay2x1/RatioDisplay2x1" unique_id=404821471]
+layout_mode = 2
+texture = SubResource("CanvasTexture_abn4i")
+
+[node name="UiLab128x64Display" type="Node" parent="Ratio Short 16x9/Hold16x9/HoldDisplay2x1/RatioDisplay2x1/TextureRect128x64" unique_id=89034039]
+script = ExtResource("2_abn4i")
+_color_true = Color(0.9432003, 0.5774857, 3.85046e-07, 1)
+_color_false = Color(0.15, 0.15, 0.15, 1)
+material_to_duplicate = SubResource("StandardMaterial3D_qwv4s")
+metadata/_custom_type_script = "uid://c0kqwirf6pl84"
+
+[node name="Code" type="Node" parent="." unique_id=1831408484]
+
+[node name="UiLabTextSubmitAtReady" type="Node" parent="Code" unique_id=184630064]
+script = ExtResource("3_qwv4s")
+text = "extends Node
+
+@onready var array: Array[bool] = []
+var screen:Node
+
+func _ready():
+	array.resize(128 * 64)
+	array.fill(false)
+	print(\"Hello 128x64\")
+
+func _on_received_target(target: Node):
+	print(\"Target:\", target)
+	screen=target
+	while (true):
+		await get_tree().create_timer(0.1).timeout
+		randomize_array()
+		screen.print_text(array,\"Hello world\")
+		draw()
+		
+
+func draw():
+		screen.set_texture_with_boolean_array(array)
+func fill():
+	array.fill(true)
+	draw()
+
+func empty():
+	array.fill(false)
+	draw()
+
+func randomize_array():
+	for i in range(array.size()):
+		array[i] = randi() % 2 == 0
+	draw()"
+metadata/_custom_type_script = "uid://cy53rb5j1vt3"
+
+[connection signal="on_texture_updated" from="Ratio Short 16x9/Hold16x9/HoldDisplay2x1/RatioDisplay2x1/TextureRect128x64/UiLab128x64Display" to="Ratio Short 16x9/Hold16x9/HoldDisplay2x1/RatioDisplay2x1/TextureRect128x64" method="set_texture"]
+[connection signal="on_text_submit" from="Code/UiLabTextSubmitAtReady" to="Ratio Short 16x9/Hold16x9/RunCodeEditWithTarget" method="set_code_in_code_edit_without_reload"]

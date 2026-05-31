@@ -2,29 +2,87 @@
 
 [ext_resource type="PackedScene" uid="uid://dm2s0fx0slyp4" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/prefab_two_wheels_car.tscn" id="1_04e8b"]
 [ext_resource type="Texture2D" uid="uid://doc56d62vhfe7" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/map/Map.png" id="1_h5kcq"]
+[ext_resource type="Script" uid="uid://dpg6opdbu6o88" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_if_red_teleport_to.gd" id="1_mouek"]
 [ext_resource type="Script" uid="uid://codjx4ebhy11r" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/ui_lab_quad_node_to_color.gd" id="2_u1sxn"]
+[ext_resource type="PackedScene" uid="uid://efcn16tp7apo" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/short_128x64/scene/prefab_short_128x64.tscn" id="4_fn6ct"]
+[ext_resource type="Script" uid="uid://bfy4c0jkmgi08" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_node_mirror_transform.gd" id="5_tskdu"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u1sxn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tskdu"]
+size = Vector3(2.991455, 1, 0.5155029)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fn6ct"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1sxn"]
 albedo_texture = ExtResource("1_h5kcq")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tskdu"]
+resource_local_to_scene = true
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_tskdu"]
 viewport_path = NodePath("TwoWheelsCar/SubViewport")
 
 [node name="Demo3dMiniCar" type="Node3D" unique_id=2088838590]
 
+[node name="AnchorInScene" type="Node3D" parent="." unique_id=1097079306]
+
+[node name="Start" type="Node3D" parent="AnchorInScene" unique_id=495315506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14572263, 0)
+
+[node name="Code" type="Node" parent="." unique_id=146738558]
+
+[node name="UiLabIfRedTeleportTo" type="Node" parent="Code" unique_id=896148501 node_paths=PackedStringArray("target_to_teleport", "where_to_teleport")]
+script = ExtResource("1_mouek")
+target_to_teleport = NodePath("../../TwoWheelsCar")
+where_to_teleport = NodePath("../../AnchorInScene/Start")
+metadata/_custom_type_script = "uid://dpg6opdbu6o88"
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1289987194]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.0648976, 0.40185234, -0.60719955)
+transform = Transform3D(1, 0, 0, 0, 0.877774, 0.47907495, 0, -0.47907495, 0.877774, 0.0648976, 0.09483953, -0.49769154)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=770672871]
+
+[node name="UiLabNodeMirroTransform" type="Node" parent="Camera3D" unique_id=198514139 node_paths=PackedStringArray("what_to_follow", "what_to_move")]
+script = ExtResource("5_tskdu")
+what_to_follow = NodePath("../../TwoWheelsCar/DefaultCamera3DAnchorPoint")
+what_to_move = NodePath("..")
+metadata/_custom_type_script = "uid://bfy4c0jkmgi08"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=732727327]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=6443028]
 shape = SubResource("WorldBoundaryShape3D_u1sxn")
+
+[node name="Walls" type="Node3D" parent="." unique_id=2087981833]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Walls" unique_id=1328749924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0134853)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D2" unique_id=1706438342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040283203, 0, -0.24224854)
+shape = SubResource("BoxShape3D_tskdu")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Walls" unique_id=1701856294]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.7680468e-07, 0, 1.0089244)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D3" unique_id=2070125072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040283203, 0, -0.24224854)
+shape = SubResource("BoxShape3D_tskdu")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Walls" unique_id=753975457]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.011205, 0, -0.002280518)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D4" unique_id=2124030548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040283203, 0, -0.24224854)
+shape = SubResource("BoxShape3D_tskdu")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Walls" unique_id=375642992]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0112047, 0, -0.0022804295)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D5" unique_id=23357087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040283203, 0, -0.24224854)
+shape = SubResource("BoxShape3D_tskdu")
 
 [node name="MeshMap" type="MeshInstance3D" parent="." unique_id=1876751621]
 mesh = SubResource("PlaneMesh_fn6ct")
@@ -47,26 +105,105 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0648976, 0.022816386, -0.60
 _left_wheel_percent_power = 0.25
 _right_wheel_percent_power = 0.30000000000000004
 
+[node name="CameraViewDebug" parent="TwoWheelsCar/CameraPosition" parent_id_path=PackedInt32Array(408629191, 1949821170) index="0" unique_id=106694097]
+surface_material_override/0 = SubResource("ShaderMaterial_tskdu")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=574822094]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2146066469]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1151455134]
+anchors_preset = -1
+anchor_right = 0.29500002
+anchor_bottom = 0.11100001
+offset_right = 11.159973
+offset_bottom = 0.07199097
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=1717351510]
-offset_left = 46.0
-offset_top = 1.0
-offset_right = 86.0
-offset_bottom = 41.0
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=2146066469]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1628855657]
-offset_left = 157.0
-offset_top = 44.0
-offset_right = 197.0
-offset_bottom = 84.0
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=1717351510]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=1628855657]
+layout_mode = 2
+size_flags_horizontal = 3
 texture = SubResource("ViewportTexture_tskdu")
 
-[connection signal="on_color_left_updated" from="MeshMap/UiLabQuadNodeToSurfaceColor" to="CanvasLayer/ColorRect" method="set_color"]
-[connection signal="on_color_right_updated" from="MeshMap/UiLabQuadNodeToSurfaceColor" to="CanvasLayer/ColorRect2" method="set_color"]
-[connection signal="on_left_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/ColorRect" method="set_color"]
-[connection signal="on_right_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/ColorRect2" method="set_color"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=82323437]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("ViewportTexture_tskdu")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1662464796]
+layout_mode = 3
+anchor_right = 0.29900002
+anchor_bottom = 1.0
+offset_right = 3.5519714
+offset_bottom = -4.0
+
+[node name="PrefabShort128x64" parent="CanvasLayer/Control" unique_id=525735575 instance=ExtResource("4_fn6ct")]
+layout_mode = 1
+
+[node name="RunCodeEditWithTarget" parent="CanvasLayer/Control/PrefabShort128x64/Ratio Short 16x9/Hold16x9" parent_id_path=PackedInt32Array(525735575, 1083762807) index="0" unique_id=805216708 node_paths=PackedStringArray("_target_node")]
+anchor_top = 0.104
+anchor_bottom = 1.0400001
+offset_top = 3.1759949
+offset_bottom = -2.2400513
+_target_node = NodePath("../../../../../../TwoWheelsCar")
+
+[node name="RatioDisplay2x1" parent="CanvasLayer/Control/PrefabShort128x64/Ratio Short 16x9/Hold16x9/HoldDisplay2x1" parent_id_path=PackedInt32Array(525735575, 1663556393) index="0" unique_id=993949072]
+visible = false
+
+[node name="UiLabTextSubmitAtReady" parent="CanvasLayer/Control/PrefabShort128x64/Code" parent_id_path=PackedInt32Array(525735575, 1831408484) index="0" unique_id=184630064]
+text = "extends Node
+
+@onready var array: Array[bool] = []
+var car:Node
+
+func _ready():
+	array.resize(128 * 64)
+	array.fill(false)
+	print(\"Hello 128x64\")
+
+func _on_received_target(target: Node):
+	print(\"Target:\", target)
+	car=target
+	car.set_wheels(1,1)
+	while (true):
+		await get_tree().create_timer(0.1).timeout
+		randomize_array()
+		car.print_text(array,\"Hello world\")
+		draw()
+		if car.has_method(\"set_wheels\"):
+			# car.set_wheels(randf_range(-1,1),randf_range(-1,1))
+			pass
+		
+
+func draw():
+		car.set_screen_128x64_to(array)
+func fill():
+	array.fill(true)
+	draw()
+
+func empty():
+	array.fill(false)
+	draw()
+
+func randomize_array():
+	for i in range(array.size()):
+		array[i] = randi() % 2 == 0
+	draw()"
+
+[connection signal="on_color_left_updated" from="MeshMap/UiLabQuadNodeToSurfaceColor" to="CanvasLayer/HBoxContainer/ColorRect" method="set_color"]
+[connection signal="on_color_right_updated" from="MeshMap/UiLabQuadNodeToSurfaceColor" to="CanvasLayer/HBoxContainer/ColorRect2" method="set_color"]
+[connection signal="on_left_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/HBoxContainer/ColorRect" method="set_color"]
+[connection signal="on_left_line_sensor_color_updated" from="TwoWheelsCar" to="Code/UiLabIfRedTeleportTo" method="check_color"]
+[connection signal="on_right_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/HBoxContainer/ColorRect2" method="set_color"]
+[connection signal="on_right_line_sensor_color_updated" from="TwoWheelsCar" to="Code/UiLabIfRedTeleportTo" method="check_color"]
+[connection signal="on_texture_updated" from="TwoWheelsCar/Code/UiLab128x64Display" to="CanvasLayer/HBoxContainer/TextureRect2" method="set_texture"]
+
+[editable path="TwoWheelsCar"]
+[editable path="CanvasLayer/Control/PrefabShort128x64"]

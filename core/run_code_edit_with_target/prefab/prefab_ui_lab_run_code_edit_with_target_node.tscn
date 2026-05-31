@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://byjrt7xivaswl"]
 
 [ext_resource type="Script" uid="uid://2dx5vlrlpgwp" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_run_code_edit_with_target_node.gd" id="1_4qv8k"]
+[ext_resource type="Script" uid="uid://j0ypqbayu7qk" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_web_page_downloader.gd" id="2_ann84"]
+[ext_resource type="Script" uid="uid://gli0l3xvr201" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_clipboard_import.gd" id="2_bhib1"]
 
 [node name="RunCodeEditWithTarget" type="Control" unique_id=805216708 node_paths=PackedStringArray("_code_edit", "_run_button", "_stop_button", "_where_to_run_code")]
 layout_mode = 3
@@ -22,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 text = "extends Node
 
 func _ready():
@@ -31,9 +34,11 @@ func _on_received_target(target:Node):
 	print(\"Target:\",target)
 
 	"
+wrap_mode = 1
 indent_wrapped_lines = true
 scroll_smooth = true
 minimap_draw = true
+caret_type = 1
 caret_blink = true
 highlight_all_occurrences = true
 highlight_current_line = true
@@ -43,16 +48,19 @@ draw_spaces = true
 symbol_lookup_on_click = true
 symbol_tooltip_on_hover = true
 line_folding = true
-gutters_draw_breakpoints_gutter = true
-gutters_draw_bookmarks = true
-gutters_draw_executing_lines = true
 gutters_draw_line_numbers = true
-gutters_line_numbers_min_digits = 4
+gutters_zero_pad_line_numbers = true
+gutters_line_numbers_min_digits = 2
 gutters_draw_fold_gutter = true
 code_completion_enabled = true
+indent_size = 2
 indent_automatic = true
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
+
+[node name="UiLabWebPageDownloader" type="Node" parent="CodeEdit" unique_id=1096331679]
+script = ExtResource("2_ann84")
+metadata/_custom_type_script = "uid://j0ypqbayu7qk"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1542283459]
 layout_mode = 1
@@ -61,6 +69,28 @@ anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=303266111]
+layout_mode = 2
+
+[node name="ButtonMoins" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=415497517]
+layout_mode = 2
+size_flags_vertical = 3
+text = "-"
+
+[node name="ButtonPlus" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1581506834]
+layout_mode = 2
+size_flags_vertical = 3
+text = "+"
+
+[node name="Button ClipIn" type="Button" parent="HBoxContainer" unique_id=1286114530]
+layout_mode = 2
+text = "Clipboard
+Import"
+
+[node name="UiLabClipboardImport" type="Node" parent="HBoxContainer/Button ClipIn" unique_id=1599349256]
+script = ExtResource("2_bhib1")
+metadata/_custom_type_script = "uid://gli0l3xvr201"
 
 [node name="Button Stop" type="Button" parent="HBoxContainer" unique_id=1324732899]
 layout_mode = 2
@@ -73,3 +103,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = " Run"
 autowrap_trim_flags = 192
+
+[connection signal="on_url_to_handle_by_third_party_script_detected" from="." to="CodeEdit/UiLabWebPageDownloader" method="set_web_page_and_download_directly"]
+[connection signal="on_text_downloaded" from="CodeEdit/UiLabWebPageDownloader" to="." method="set_code_in_code_edit_without_reload"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonMoins" to="." method="reduce_text_size"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonPlus" to="." method="increase_text_size"]
+[connection signal="button_down" from="HBoxContainer/Button ClipIn" to="HBoxContainer/Button ClipIn/UiLabClipboardImport" method="import_from_clipboard"]
+[connection signal="on_clipboard_import_request" from="HBoxContainer/Button ClipIn/UiLabClipboardImport" to="." method="set_code_in_code_edit_without_reload"]
+[connection signal="on_url_detected_on_last_import" from="HBoxContainer/Button ClipIn/UiLabClipboardImport" to="CodeEdit/UiLabWebPageDownloader" method="set_web_page_and_download_directly"]

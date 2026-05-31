@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bagoc04i4xpmf"
 path.s3tc="res://.godot/imported/rust_ground.jpg-1a509b7c926ae2f530eab0d57352dd33.s3tc.ctex"
+path.etc2="res://.godot/imported/rust_ground.jpg-1a509b7c926ae2f530eab0d57352dd33.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/map/rust_ground.jpg"
-dest_files=["res://.godot/imported/rust_ground.jpg-1a509b7c926ae2f530eab0d57352dd33.s3tc.ctex"]
+dest_files=["res://.godot/imported/rust_ground.jpg-1a509b7c926ae2f530eab0d57352dd33.s3tc.ctex", "res://.godot/imported/rust_ground.jpg-1a509b7c926ae2f530eab0d57352dd33.etc2.ctex"]
 
 [params]
 

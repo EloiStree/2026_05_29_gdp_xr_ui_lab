@@ -17,13 +17,15 @@ extends Control
 ## Method to call on the player code to provide him target and new target.
 @export var _method_to_notify_new_target:String="_on_received_target"
 
-
-
+@export var _use_default_color_style:bool=true
 func _ready() -> void:
 	if _run_button:
 		_run_button.button_down.connect(reload_code_from_code_edit)
 	if _stop_button:
 		_stop_button.button_down.connect(unload_current_code)
+	
+	if _use_default_color_style:
+		load_text_color_style()
 
 #region Target
 
@@ -212,9 +214,20 @@ func unload_current_code():
 	on_destroy_previous_node_holding_code_end.emit()		
 
 
+func is_url(text:String):
+	var t = text.strip_edges()
+	return t.begins_with("http://") or t.begins_with("https://")
+	
+signal on_url_to_handle_by_third_party_script_detected(url:String)
+
 ## I am the method that load the text given as code of the player to run as Godot script in a new node.
 func load_and_run_text_as_godot_script(code:String):
-	
+	if is_url(code):
+		on_url_to_handle_by_third_party_script_detected.emit(code)
+		return
+	if not code.contains("extends "):
+		code = "extends Node\n  "+code
+		
 	## When we start we need to destroy the previous one.
 	unload_current_code()
 	## code cant be loaded like that. you need to load from file
@@ -292,3 +305,81 @@ func get_target_node()->Node:
 
 
 #endregion
+
+
+
+#region HIGHLIGHT COLOR
+
+func load_text_color_style():
+	var highlighter := CodeHighlighter.new()
+
+	# Keywords
+	highlighter.keyword_colors = {
+		"if": Color("ff7085"),
+		"elif": Color("ff7085"),
+		"else": Color("ff7085"),
+		"for": Color("ff7085"),
+		"while": Color("ff7085"),
+		"match": Color("ff7085"),
+		"break": Color("ff7085"),
+		"continue": Color("ff7085"),
+		"pass": Color("ff7085"),
+		"return": Color("ff7085"),
+		"class": Color("ff7085"),
+		"class_name": Color("ff7085"),
+		"extends": Color("ff7085"),
+		"func": Color("ff7085"),
+		"static": Color("ff7085"),
+		"const": Color("ff7085"),
+		"var": Color("ff7085"),
+		"enum": Color("ff7085"),
+		"signal": Color("ff7085"),
+		"await": Color("ff7085"),
+		"yield": Color("ff7085"),
+		"assert": Color("ff7085")
+	}
+
+	# Built-in types
+	highlighter.member_keyword_colors = {
+		"int": Color("42ffc2"),
+		"float": Color("42ffc2"),
+		"bool": Color("42ffc2"),
+		"String": Color("42ffc2"),
+		"Array": Color("42ffc2"),
+		"Dictionary": Color("42ffc2"),
+		"Vector2": Color("42ffc2"),
+		"Vector3": Color("42ffc2"),
+		"Color": Color("42ffc2"),
+		"Node": Color("42ffc2"),
+		"Object": Color("42ffc2")
+	}
+
+	# General token colors
+	highlighter.number_color = Color("a1ffe0")
+	highlighter.symbol_color = Color("abc9ff")
+	highlighter.function_color = Color("57b3ff")
+	highlighter.member_variable_color = Color("c6a0ff")
+
+	# Regions
+	highlighter.add_color_region("\"", "\"", Color("ffd942"), false)
+	highlighter.add_color_region("'", "'", Color("ffd942"), false)
+	highlighter.add_color_region("#", "", Color("7a7a7a"), true)
+
+
+	_code_edit.syntax_highlighter = highlighter
+		
+
+
+func increase_text_size():
+	_code_edit.add_theme_font_size_override(
+		"font_size",
+		_code_edit.get_theme_font_size("font_size") + 1
+	)
+
+func reduce_text_size():
+	_code_edit.add_theme_font_size_override(
+		"font_size",
+		_code_edit.get_theme_font_size("font_size") - 1
+	)
+	
+	
