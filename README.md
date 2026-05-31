@@ -33,6 +33,10 @@ func print_text(array:Array[bool], text:String, letter_color:bool=true, use_back
 
 func get_car_id()->int:
 
+func get_car_position()->Vector3:   
+func get_car_rotation()->Quaternion:   
+func get_car_euler()->Vector3:
+
 ```
 <img width="1404" height="917" alt="image" src="https://github.com/user-attachments/assets/49860ef9-8e47-43b4-a536-f1f70d034676" />
 <img width="1145" height="643" alt="image" src="https://github.com/user-attachments/assets/a7f2d6ee-7d33-4c9c-941c-26c4916d8849" />
