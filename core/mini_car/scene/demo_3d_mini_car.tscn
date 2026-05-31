@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpg6opdbu6o88" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_if_red_teleport_to.gd" id="1_uigua"]
 [ext_resource type="Script" uid="uid://bfy4c0jkmgi08" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_node_mirror_transform.gd" id="2_hu4id"]
-[ext_resource type="Script" uid="uid://bls3ss8xr7a4y" path="res://addons/2026_05_29_gdp_xr_ui_lab/unstored/ui_lab_main_target_in_scene.gd" id="2_o67sq"]
+[ext_resource type="Script" uid="uid://bls3ss8xr7a4y" path="res://addons/2026_05_29_gdp_xr_ui_lab/_/unstored/ui_lab_main_target_in_scene.gd" id="2_o67sq"]
 [ext_resource type="Texture2D" uid="uid://doc56d62vhfe7" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/map/Map.png" id="3_ru5xq"]
 [ext_resource type="Script" uid="uid://codjx4ebhy11r" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/ui_lab_quad_node_to_color.gd" id="4_rpkl7"]
 [ext_resource type="PackedScene" uid="uid://dm2s0fx0slyp4" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/prefab_two_wheels_car.tscn" id="5_sajmv"]
@@ -18,7 +18,7 @@ size = Vector3(2.991455, 1, 0.5155029)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1sxn"]
 albedo_texture = ExtResource("3_ru5xq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ua8wg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o67sq"]
 resource_local_to_scene = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tskdu"]
@@ -112,7 +112,7 @@ _left_wheel_percent_power = 0.25
 _right_wheel_percent_power = 0.30000000000000004
 
 [node name="CameraViewDebug" parent="TwoWheelsCar/CameraPosition" parent_id_path=PackedInt32Array(408629191, 1949821170) index="0" unique_id=106694097]
-surface_material_override/0 = SubResource("ShaderMaterial_ua8wg")
+surface_material_override/0 = SubResource("ShaderMaterial_o67sq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=574822094]
 
@@ -217,3 +217,4 @@ func randomize_array():
 
 [editable path="TwoWheelsCar"]
 [editable path="CanvasLayer/Control/PrefabShort128x64"]
+[editable path="CanvasLayer/Control/PrefabShort128x64/Ratio Short 16x9/Hold16x9/RunCodeEditWithTarget"]
