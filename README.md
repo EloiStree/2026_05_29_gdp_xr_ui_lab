@@ -10,6 +10,9 @@ This repository on GitHub is meant to help you learn the Godot UI while experime
 
 The idea is to get comfortable navigating the Godot UI while iterating on XR interactions, not to ship anything perfect—just to understand how things fit together when you start pushing them around.      
 
+Workshop: [Hello IDE](https://github.com/EloiStree/2026_05_11_workshop_hello_godot_xr/tree/main/week_4/day_01/special) 
+
+
 **Method you can use to move the car:**
 ``` gdscript
 func set_wheels(left:float,right:float):
