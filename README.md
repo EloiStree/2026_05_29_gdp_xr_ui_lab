@@ -30,11 +30,11 @@ func get_car_euler()->Vector3:
 
 ```
 
-You have a code editor to run code:
-`UiLabRunCodeEditWithTargetNode` → `prefab_ui_lab_run_code_edit_with_target_node.tscn`
+You have a code editor to run code:   
+`UiLabRunCodeEditWithTargetNode` → `prefab_ui_lab_run_code_edit_with_target_node.tscn`   
 
-And a mini car to move:
-`UiLabTwoWheelsMiniCar` → `prefab_two_wheels_car.tscn`
+And a mini car to move:   
+`UiLabTwoWheelsMiniCar` → `prefab_two_wheels_car.tscn`   
 
 ---
 
