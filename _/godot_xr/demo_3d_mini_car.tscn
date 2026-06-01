@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://skqxyh687eq8"]
 
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_h8vgj"]
 [ext_resource type="PackedScene" uid="uid://byjrt7xivaswl" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/prefab/prefab_ui_lab_run_code_edit_with_target_node.tscn" id="2_2gd8d"]
 [ext_resource type="Script" uid="uid://dpg6opdbu6o88" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_if_red_teleport_to.gd" id="3_n7gvh"]
 [ext_resource type="Texture2D" uid="uid://doc56d62vhfe7" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/map/Map.png" id="4_qcrta"]
@@ -8,40 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://dm2s0fx0slyp4" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/prefab_two_wheels_car.tscn" id="6_ql8to"]
 [ext_resource type="Script" uid="uid://bls3ss8xr7a4y" path="res://addons/2026_05_29_gdp_xr_ui_lab/_/unstored/ui_lab_main_target_in_scene.gd" id="7_k8o5d"]
 [ext_resource type="PackedScene" uid="uid://efcn16tp7apo" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/short_128x64/scene/prefab_short_128x64.tscn" id="7_yynac"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/player/fade/fade_collision.tscn" id="8_nqccj"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/functions/function_gaze_pointer.tscn" id="9_1irbt"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/desktop-support/function_desktop_pointer.tscn" id="10_viw8j"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/effects/vignette.tscn" id="11_16py4"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="12_2s8sq"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="13_uyo5a"]
-[ext_resource type="PackedScene" path="res://assets/meshes/control_pad/control_pad_location_left.tscn" id="14_j4avf"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/functions/function_pose_detector.tscn" id="15_ew627"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="16_wlevm"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/desktop-support/controller_hider.tscn" id="17_v5vjm"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="18_crs7d"]
-[ext_resource type="Material" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="19_k2t0j"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="20_dfhn5"]
-[ext_resource type="PackedScene" path="res://assets/meshes/control_pad/control_pad_location_right.tscn" id="21_vb827"]
-[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/player/player_body.tscn" id="22_m5gxf"]
-[ext_resource type="PackedScene" path="res://assets/meshes/control_pad/control_pad.tscn" id="23_4112p"]
+[ext_resource type="PackedScene" uid="uid://b228p8k6sonve" path="res://addons/godot-xr-tools/player/fade/fade_collision.tscn" id="8_nqccj"]
+[ext_resource type="PackedScene" uid="uid://do1wif8rpqtwj" path="res://addons/godot-xr-tools/functions/function_gaze_pointer.tscn" id="9_1irbt"]
+[ext_resource type="PackedScene" uid="uid://cc6ngdqie8o8c" path="res://addons/godot-xr-tools/effects/vignette.tscn" id="11_16py4"]
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="12_2s8sq"]
+[ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="13_uyo5a"]
+[ext_resource type="PackedScene" uid="uid://bwr0eqi231lf0" path="res://assets/meshes/control_pad/control_pad_location_left.tscn" id="14_j4avf"]
+[ext_resource type="PackedScene" uid="uid://bft3xyxs31ci3" path="res://addons/godot-xr-tools/functions/function_pose_detector.tscn" id="15_ew627"]
+[ext_resource type="Script" uid="uid://eavk7267igp7" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="15_k8o5d"]
+[ext_resource type="Script" uid="uid://chox4aj6jeffs" path="res://_/scene/script/godot_plus_reparent.gd" id="16_npqoy"]
+[ext_resource type="Script" uid="uid://cpl5yiyf1ypft" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="17_npqoy"]
+[ext_resource type="PackedScene" uid="uid://chb848dtavews" path="res://addons/godot-xr-tools/desktop-support/controller_hider.tscn" id="17_v5vjm"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="18_crs7d"]
+[ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="19_k2t0j"]
+[ext_resource type="Script" uid="uid://kbcxt0r1ol00" path="res://_/scene/script/listen_to_controller_trigger.gd" id="20_wd8ub"]
+[ext_resource type="PackedScene" uid="uid://deyk5frilshws" path="res://assets/meshes/control_pad/control_pad_location_right.tscn" id="21_vb827"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="22_m5gxf"]
+[ext_resource type="PackedScene" uid="uid://ct3p5sgwvkmva" path="res://assets/meshes/control_pad/control_pad.tscn" id="23_4112p"]
 [ext_resource type="Script" uid="uid://j0ypqbayu7qk" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_web_page_downloader.gd" id="26_npqoy"]
 [ext_resource type="Script" uid="uid://ticbi6uubof4" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/xr/ui_lab_xr_setup.gd" id="30_f8l6r"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u1sxn"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tskdu"]
-size = Vector3(2.991455, 1, 0.5155029)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_fn6ct"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1sxn"]
-albedo_texture = ExtResource("4_qcrta")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_npqoy"]
-resource_local_to_scene = true
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_tskdu"]
-viewport_path = NodePath("TwoWheelsCar/SubViewport")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g6vnp"]
 animation = &"Grip"
@@ -105,26 +89,218 @@ nodes/Trigger/node = SubResource("AnimationNodeBlend2_nqccj")
 nodes/Trigger/position = Vector2(-360, 40)
 node_connections = [&"output", 0, &"Grip", &"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_viw8j"]
+[sub_resource type="QuadMesh" id="QuadMesh_viw8j"]
+resource_local_to_scene = true
+size = Vector2(1, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_16py4"]
+viewport_path = NodePath("Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s8sq"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_16py4")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uyo5a"]
+resource_local_to_scene = true
+size = Vector3(1, 2, 0.02)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u1sxn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tskdu"]
+size = Vector3(2.991455, 1, 0.5155029)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fn6ct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1sxn"]
+albedo_texture = ExtResource("4_qcrta")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4avf"]
+resource_local_to_scene = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tskdu"]
+viewport_path = NodePath("TwoWheelsCar/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ew627"]
 resource_local_to_scene = true
 
 [node name="Demo3dMiniCar" type="Node3D" unique_id=2088838590]
 
-[node name="Viewport2Din3D" parent="." unique_id=1805700542 node_paths=PackedStringArray("_code_edit", "_run_button", "_stop_button", "_where_to_run_code") instance=ExtResource("1_h8vgj")]
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=1414998613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3878956)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=350541423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+far = 300.0
+
+[node name="FadeCollision" parent="XROrigin3D/XRCamera3D" unique_id=2081125166 instance=ExtResource("8_nqccj")]
+
+[node name="Vignette" parent="XROrigin3D/XRCamera3D" unique_id=791139486 instance=ExtResource("11_16py4")]
+auto_inner_radius = 0.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="XROrigin3D/XRCamera3D" unique_id=935568182]
+light_energy = 0.7
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D" unique_id=1088935666]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.5, 1, -0.5)
+tracker = &"left_hand"
+pose = &"grip"
+show_when_tracked = true
+
+[node name="LeftHand" parent="XROrigin3D/LeftHand" unique_id=1357859863 instance=ExtResource("12_2s8sq")]
+
+[node name="Hand_low_L" parent="XROrigin3D/LeftHand/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -0.01, 0.03535534, 0.03535534)
+
+[node name="Skeleton3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature" index="0" unique_id=472802244]
+bones/1/rotation = Quaternion(0.323537, -2.5658142e-05, -0.027220426, 0.9458239)
+bones/2/rotation = Quaternion(-0.09044407, -0.04151748, -0.16629349, 0.98104167)
+bones/3/rotation = Quaternion(-0.04661986, 0.02097099, 0.010327632, 0.9986392)
+bones/5/rotation = Quaternion(-0.0012845465, -0.011608094, -0.016825877, 0.99979025)
+bones/6/rotation = Quaternion(0.10292491, -0.009932083, -0.007944166, 0.9946078)
+bones/7/rotation = Quaternion(-0.012859, -0.023610815, -0.32325828, 0.9459289)
+bones/8/rotation = Quaternion(0.012057539, -0.009291937, -0.24747224, 0.96877545)
+bones/10/rotation = Quaternion(-0.035753887, -0.0004000325, 0.0063676415, 0.9993403)
+bones/11/rotation = Quaternion(-0.0026496367, -0.0011447113, -0.12599176, 0.9920271)
+bones/12/rotation = Quaternion(0.039422527, 0.0019339261, -0.22807404, 0.97284347)
+bones/13/rotation = Quaternion(-0.012339468, -0.008812943, -0.28066906, 0.9596848)
+bones/15/rotation = Quaternion(-0.070265576, 0.010190836, -0.024330735, 0.9971795)
+bones/16/rotation = Quaternion(-0.032063447, -0.002236244, -0.06863657, 0.99712384)
+bones/17/rotation = Quaternion(0.025345208, 0.008124622, -0.2490055, 0.9681363)
+bones/18/rotation = Quaternion(0.0025223217, 0.007880732, -0.2432038, 0.9699399)
+bones/20/rotation = Quaternion(-0.09173688, 0.020302717, -0.010182976, 0.9955242)
+bones/21/rotation = Quaternion(-0.06251818, -0.00022572002, -0.115392834, 0.99135065)
+bones/22/rotation = Quaternion(0.058578636, 0.021648303, -0.26990518, 0.9608596)
+bones/23/rotation = Quaternion(0.006871769, -0.0035727466, -0.21195254, 0.97724926)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="1" unique_id=549066478]
+transform = Transform3D(0.5408296, 0.8408128, -0.023173608, -0.08262672, 0.08052427, 0.99332196, 0.83706397, -0.5353032, 0.11302349, 0.039901964, 0.040282845, -0.15009598)
+bone_name = "Index_Tip_L"
+bone_idx = 9
+
+[node name="Poke" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D/BoneAttachment3D" unique_id=1891728583 instance=ExtResource("13_uyo5a")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AnimationTree" parent="XROrigin3D/LeftHand/LeftHand" index="1"]
+tree_root = SubResource("AnimationNodeBlendTree_n7gvh")
+
+[node name="ControlPadLocationLeft" parent="XROrigin3D/LeftHand" unique_id=1113939573 instance=ExtResource("14_j4avf")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="FunctionPoseDetector" parent="XROrigin3D/LeftHand" unique_id=617402431 instance=ExtResource("15_ew627")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="ControllerHider" parent="XROrigin3D/LeftHand" unique_id=807656488 instance=ExtResource("17_v5vjm")]
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=28027228]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.5, 1, -0.5)
+tracker = &"right_hand"
+pose = &"grip"
+show_when_tracked = true
+
+[node name="RightHand" parent="XROrigin3D/RightHand" unique_id=219973226 instance=ExtResource("18_crs7d")]
+
+[node name="Hand_low_R" parent="XROrigin3D/RightHand/RightHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0.01, 0.03535534, 0.03535534)
+
+[node name="Skeleton3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature" index="0" unique_id=1399096914]
+bones/1/rotation = Quaternion(0.323537, 2.5658142e-05, 0.027220426, 0.9458239)
+bones/2/rotation = Quaternion(-0.09044407, 0.04151748, 0.16629349, 0.98104167)
+bones/3/rotation = Quaternion(-0.04661986, -0.020970985, -0.010327632, 0.9986392)
+bones/5/rotation = Quaternion(-0.0012845465, 0.011608096, 0.01682588, 0.99979025)
+bones/6/rotation = Quaternion(0.10292492, 0.009932085, 0.007944188, 0.9946078)
+bones/7/rotation = Quaternion(-0.012859004, 0.023610815, 0.32325834, 0.94592875)
+bones/8/rotation = Quaternion(0.012057537, 0.0092919255, 0.24747224, 0.96877545)
+bones/10/rotation = Quaternion(-0.035753887, 0.00040003238, -0.0063676336, 0.9993403)
+bones/11/rotation = Quaternion(-0.0026496367, 0.0011447114, 0.1259918, 0.9920271)
+bones/12/rotation = Quaternion(0.03942253, -0.0019339275, 0.2280741, 0.97284347)
+bones/13/rotation = Quaternion(-0.012339467, 0.008812944, 0.28066906, 0.9596848)
+bones/15/rotation = Quaternion(-0.07026557, -0.010190836, 0.024330745, 0.99717957)
+bones/16/rotation = Quaternion(-0.032063447, 0.002236245, 0.06863657, 0.99712384)
+bones/17/rotation = Quaternion(0.025345206, -0.00812462, 0.24900547, 0.9681363)
+bones/18/rotation = Quaternion(0.0025223275, -0.007880732, 0.24320383, 0.9699399)
+bones/20/rotation = Quaternion(-0.09173688, -0.020302719, 0.010182976, 0.9955242)
+bones/21/rotation = Quaternion(-0.06251817, 0.00022572096, 0.115392834, 0.99135065)
+bones/22/rotation = Quaternion(0.058578644, -0.021648303, 0.26990518, 0.9608596)
+bones/23/rotation = Quaternion(0.0068717655, 0.0035727452, 0.21195254, 0.97724926)
+
+[node name="mesh_Hand_low_R" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="0" unique_id=369953184]
+surface_material_override/0 = ExtResource("19_k2t0j")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="1" unique_id=1218161222]
+transform = Transform3D(0.5408295, -0.8408129, 0.023173586, 0.08262676, 0.08052423, 0.99332196, -0.83706397, -0.53530306, 0.11302352, -0.03990197, 0.040282845, -0.15009597)
+bone_name = "Index_Tip_R"
+bone_idx = 9
+
+[node name="Poke" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D/BoneAttachment3D" unique_id=1467830282 instance=ExtResource("13_uyo5a")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AnimationTree" parent="XROrigin3D/RightHand/RightHand" index="1"]
+tree_root = SubResource("AnimationNodeBlendTree_1irbt")
+
+[node name="FunctionPoseDetector" parent="XROrigin3D/RightHand" unique_id=1077046795 instance=ExtResource("15_ew627")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="ControlPadLocationRight" parent="XROrigin3D/RightHand" unique_id=2018415981 instance=ExtResource("21_vb827")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="ControllerHider" parent="XROrigin3D/RightHand" unique_id=941981162 instance=ExtResource("17_v5vjm")]
+
+[node name="FunctionGazePointer" parent="XROrigin3D/RightHand" unique_id=1562291149 instance=ExtResource("9_1irbt")]
+transform = Transform3D(1, 0, 0, 0, 0.7071066, 0.7071066, 0, -0.7071066, 0.7071066, -0.5, 0.91923845, -0.21213198)
+show_laser = 1
+color = Color(0.56744117, 0.19293097, 0.10629942, 1)
+
+[node name="GodotPlusListenToControllerTrigger" type="Node" parent="XROrigin3D/RightHand/FunctionGazePointer" unique_id=742445697]
+script = ExtResource("20_wd8ub")
+metadata/_custom_type_script = "uid://kbcxt0r1ol00"
+
+[node name="PlayerBody" parent="XROrigin3D" unique_id=916715747 instance=ExtResource("22_m5gxf")]
+
+[node name="ControlPad" parent="XROrigin3D" unique_id=1288215766 instance=ExtResource("23_4112p")]
+
+[node name="RunCodeEditWithTargetdddd" parent="." unique_id=805216708 instance=ExtResource("2_2gd8d")]
+
+[node name="GodotPlusReparent" type="Node" parent="RunCodeEditWithTargetdddd" unique_id=1471017563 node_paths=PackedStringArray("target", "to_parent_to")]
+script = ExtResource("16_npqoy")
+target = NodePath("..")
+to_parent_to = NodePath("../../Viewport2Din3D/Viewport")
+metadata/_custom_type_script = "uid://chox4aj6jeffs"
+
+[node name="Viewport2Din3D" type="Node3D" parent="." unique_id=1805700542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2922257, -1.4626677)
+script = ExtResource("15_k8o5d")
 screen_size = Vector2(1, 2)
-scene = ExtResource("2_2gd8d")
 viewport_size = Vector2(450, 800)
 transparent = 1
-scene_properties_keys = PackedStringArray("ui_lab_run_code_edit_with_target_node.gd", "_code_edit", "_run_button", "_stop_button", "_target_node", "_method_to_notify_new_target", "_use_default_color_style", "Modding", "_where_to_run_code", "_unique_code_file_name", "_create_node_as_node_3d", "Modding/Debug", "_created_node_holding_code")
-_code_edit = NodePath("Viewport/RunCodeEditWithTarget/CodeEdit")
-_run_button = NodePath("Viewport/RunCodeEditWithTarget/HBoxContainer/Button Run")
-_stop_button = NodePath("Viewport/RunCodeEditWithTarget/HBoxContainer/Button Stop")
-_method_to_notify_new_target = "_on_received_target"
-_use_default_color_style = true
-_where_to_run_code = NodePath("Viewport/RunCodeEditWithTarget")
-_unique_code_file_name = "code_edit_file.gd"
-_create_node_as_node_3d = false
+alpha_scissor_threshold = 0.25
+unshaded = true
+filter = true
+scene_properties_keys = PackedStringArray()
+
+[node name="Viewport" type="SubViewport" parent="Viewport2Din3D" unique_id=446421192]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(450, 800)
+render_target_update_mode = 4
+
+[node name="Screen" type="MeshInstance3D" parent="Viewport2Din3D" unique_id=946271366]
+mesh = SubResource("QuadMesh_viw8j")
+surface_material_override/0 = SubResource("StandardMaterial3D_2s8sq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Viewport2Din3D" unique_id=229648905]
+collision_layer = 5242881
+collision_mask = 0
+script = ExtResource("17_npqoy")
+screen_size = Vector2(1, 2)
+viewport_size = Vector2(450, 800)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Viewport2Din3D/StaticBody3D" unique_id=1440542046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+shape = SubResource("BoxShape3D_uyo5a")
 
 [node name="AnchorInScene" type="Node3D" parent="." unique_id=1097079306]
 
@@ -196,7 +372,7 @@ _left_wheel_percent_power = 0.25
 _right_wheel_percent_power = 0.30000000000000004
 
 [node name="CameraViewDebug" parent="TwoWheelsCar/CameraPosition" parent_id_path=PackedInt32Array(408629191, 1949821170) index="0" unique_id=106694097]
-surface_material_override/0 = SubResource("ShaderMaterial_npqoy")
+surface_material_override/0 = SubResource("ShaderMaterial_j4avf")
 
 [node name="UiLabMainTargetInScene" type="Node" parent="TwoWheelsCar" unique_id=1820414982 node_paths=PackedStringArray("_target")]
 script = ExtResource("7_k8o5d")
@@ -293,143 +469,6 @@ func randomize_array():
 		array[i] = randi() % 2 == 0
 	draw()"
 
-[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=1414998613]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3878956)
-
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=350541423]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-far = 300.0
-
-[node name="FadeCollision" parent="XROrigin3D/XRCamera3D" unique_id=2081125166 instance=ExtResource("8_nqccj")]
-
-[node name="FunctionGazePointer" parent="XROrigin3D/XRCamera3D" unique_id=1562291149 instance=ExtResource("9_1irbt")]
-click_on_hold = true
-color = Color(1, 0, 1, 1)
-
-[node name="FunctionDesktopPointer" parent="XROrigin3D/XRCamera3D" unique_id=1143040095 instance=ExtResource("10_viw8j")]
-
-[node name="Vignette" parent="XROrigin3D/XRCamera3D" unique_id=791139486 instance=ExtResource("11_16py4")]
-auto_inner_radius = 0.5
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="XROrigin3D/XRCamera3D" unique_id=935568182]
-light_energy = 0.7
-
-[node name="LeftHand" type="XRController3D" parent="XROrigin3D" unique_id=1088935666]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.5, 1, -0.5)
-tracker = &"left_hand"
-pose = &"grip"
-show_when_tracked = true
-
-[node name="LeftHand" parent="XROrigin3D/LeftHand" unique_id=1357859863 instance=ExtResource("12_2s8sq")]
-
-[node name="Hand_low_L" parent="XROrigin3D/LeftHand/LeftHand" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -0.01, 0.03535534, 0.03535534)
-
-[node name="Skeleton3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature" index="0" unique_id=425039731]
-bones/1/rotation = Quaternion(0.323537, -2.5658142e-05, -0.027220426, 0.9458239)
-bones/2/rotation = Quaternion(-0.09044407, -0.04151748, -0.16629349, 0.98104167)
-bones/3/rotation = Quaternion(-0.04661986, 0.02097099, 0.010327632, 0.9986392)
-bones/5/rotation = Quaternion(-0.0012845465, -0.011608094, -0.016825877, 0.99979025)
-bones/6/rotation = Quaternion(0.10292491, -0.009932083, -0.007944166, 0.9946078)
-bones/7/rotation = Quaternion(-0.012859, -0.023610815, -0.32325828, 0.9459289)
-bones/8/rotation = Quaternion(0.012057539, -0.009291937, -0.24747224, 0.96877545)
-bones/10/rotation = Quaternion(-0.035753887, -0.0004000325, 0.0063676415, 0.9993403)
-bones/11/rotation = Quaternion(-0.0026496367, -0.0011447113, -0.12599176, 0.9920271)
-bones/12/rotation = Quaternion(0.039422527, 0.0019339261, -0.22807404, 0.97284347)
-bones/13/rotation = Quaternion(-0.012339468, -0.008812943, -0.28066906, 0.9596848)
-bones/15/rotation = Quaternion(-0.070265576, 0.010190836, -0.024330735, 0.9971795)
-bones/16/rotation = Quaternion(-0.032063447, -0.002236244, -0.06863657, 0.99712384)
-bones/17/rotation = Quaternion(0.025345208, 0.008124622, -0.2490055, 0.9681363)
-bones/18/rotation = Quaternion(0.0025223217, 0.007880732, -0.2432038, 0.9699399)
-bones/20/rotation = Quaternion(-0.09173688, 0.020302717, -0.010182976, 0.9955242)
-bones/21/rotation = Quaternion(-0.06251818, -0.00022572002, -0.115392834, 0.99135065)
-bones/22/rotation = Quaternion(0.058578636, 0.021648303, -0.26990518, 0.9608596)
-bones/23/rotation = Quaternion(0.006871769, -0.0035727466, -0.21195254, 0.97724926)
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="1" unique_id=549066478]
-transform = Transform3D(0.5408296, 0.8408128, -0.023173608, -0.08262672, 0.08052427, 0.99332196, 0.83706397, -0.5353032, 0.11302349, 0.039901964, 0.040282845, -0.15009598)
-bone_name = "Index_Tip_L"
-bone_idx = 9
-
-[node name="Poke" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D/BoneAttachment3D" unique_id=1891728583 instance=ExtResource("13_uyo5a")]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="AnimationTree" parent="XROrigin3D/LeftHand/LeftHand" index="1"]
-tree_root = SubResource("AnimationNodeBlendTree_n7gvh")
-
-[node name="ControlPadLocationLeft" parent="XROrigin3D/LeftHand" unique_id=1113939573 instance=ExtResource("14_j4avf")]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
-
-[node name="FunctionPoseDetector" parent="XROrigin3D/LeftHand" unique_id=617402431 instance=ExtResource("15_ew627")]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
-
-[node name="MovementDirect" parent="XROrigin3D/LeftHand" unique_id=1599224337 instance=ExtResource("16_wlevm")]
-strafe = true
-
-[node name="ControllerHider" parent="XROrigin3D/LeftHand" unique_id=807656488 instance=ExtResource("17_v5vjm")]
-
-[node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=28027228]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.5, 1, -0.5)
-tracker = &"right_hand"
-pose = &"grip"
-show_when_tracked = true
-
-[node name="RightHand" parent="XROrigin3D/RightHand" unique_id=219973226 instance=ExtResource("18_crs7d")]
-
-[node name="Hand_low_R" parent="XROrigin3D/RightHand/RightHand" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0.01, 0.03535534, 0.03535534)
-
-[node name="Skeleton3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature" index="0" unique_id=487992100]
-bones/1/rotation = Quaternion(0.323537, 2.5658142e-05, 0.027220426, 0.9458239)
-bones/2/rotation = Quaternion(-0.09044407, 0.04151748, 0.16629349, 0.98104167)
-bones/3/rotation = Quaternion(-0.04661986, -0.020970985, -0.010327632, 0.9986392)
-bones/5/rotation = Quaternion(-0.0012845465, 0.011608096, 0.01682588, 0.99979025)
-bones/6/rotation = Quaternion(0.10292492, 0.009932085, 0.007944188, 0.9946078)
-bones/7/rotation = Quaternion(-0.012859004, 0.023610815, 0.32325834, 0.94592875)
-bones/8/rotation = Quaternion(0.012057537, 0.0092919255, 0.24747224, 0.96877545)
-bones/10/rotation = Quaternion(-0.035753887, 0.00040003238, -0.0063676336, 0.9993403)
-bones/11/rotation = Quaternion(-0.0026496367, 0.0011447114, 0.1259918, 0.9920271)
-bones/12/rotation = Quaternion(0.03942253, -0.0019339275, 0.2280741, 0.97284347)
-bones/13/rotation = Quaternion(-0.012339467, 0.008812944, 0.28066906, 0.9596848)
-bones/15/rotation = Quaternion(-0.07026557, -0.010190836, 0.024330745, 0.99717957)
-bones/16/rotation = Quaternion(-0.032063447, 0.002236245, 0.06863657, 0.99712384)
-bones/17/rotation = Quaternion(0.025345206, -0.00812462, 0.24900547, 0.9681363)
-bones/18/rotation = Quaternion(0.0025223275, -0.007880732, 0.24320383, 0.9699399)
-bones/20/rotation = Quaternion(-0.09173688, -0.020302719, 0.010182976, 0.9955242)
-bones/21/rotation = Quaternion(-0.06251817, 0.00022572096, 0.115392834, 0.99135065)
-bones/22/rotation = Quaternion(0.058578644, -0.021648303, 0.26990518, 0.9608596)
-bones/23/rotation = Quaternion(0.0068717655, 0.0035727452, 0.21195254, 0.97724926)
-
-[node name="mesh_Hand_low_R" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="0" unique_id=2025624883]
-surface_material_override/0 = ExtResource("19_k2t0j")
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="1" unique_id=1218161222]
-transform = Transform3D(0.5408295, -0.8408129, 0.023173586, 0.08262676, 0.08052423, 0.99332196, -0.83706397, -0.53530306, 0.11302352, -0.03990197, 0.040282845, -0.15009597)
-bone_name = "Index_Tip_R"
-bone_idx = 9
-
-[node name="Poke" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D/BoneAttachment3D" unique_id=1467830282 instance=ExtResource("13_uyo5a")]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="AnimationTree" parent="XROrigin3D/RightHand/RightHand" index="1"]
-tree_root = SubResource("AnimationNodeBlendTree_1irbt")
-
-[node name="FunctionPoseDetector" parent="XROrigin3D/RightHand" unique_id=1077046795 instance=ExtResource("15_ew627")]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
-
-[node name="MovementDirect" parent="XROrigin3D/RightHand" unique_id=2097317707 instance=ExtResource("16_wlevm")]
-
-[node name="MovementTurn" parent="XROrigin3D/RightHand" unique_id=1628521118 instance=ExtResource("20_dfhn5")]
-
-[node name="ControlPadLocationRight" parent="XROrigin3D/RightHand" unique_id=2018415981 instance=ExtResource("21_vb827")]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
-
-[node name="ControllerHider" parent="XROrigin3D/RightHand" unique_id=941981162 instance=ExtResource("17_v5vjm")]
-
-[node name="PlayerBody" parent="XROrigin3D" unique_id=916715747 instance=ExtResource("22_m5gxf")]
-
-[node name="ControlPad" parent="XROrigin3D" unique_id=1288215766 instance=ExtResource("23_4112p")]
-
 [node name="UiLabXrSetup" type="Node" parent="." unique_id=1635264742]
 script = ExtResource("30_f8l6r")
 metadata/_custom_type_script = "uid://ticbi6uubof4"
@@ -450,8 +489,10 @@ _left_wheel_percent_power = 0.25
 _right_wheel_percent_power = 0.30000000000000004
 
 [node name="CameraViewDebug" parent="Student/StudentFromUrlNode/TwoWheelsCar/CameraPosition" parent_id_path=PackedInt32Array(284886965, 1949821170) index="0" unique_id=106694097]
-surface_material_override/0 = SubResource("ShaderMaterial_viw8j")
+surface_material_override/0 = SubResource("ShaderMaterial_ew627")
 
+[connection signal="on_trigger_down" from="XROrigin3D/RightHand/FunctionGazePointer/GodotPlusListenToControllerTrigger" to="XROrigin3D/RightHand/FunctionGazePointer" method="_button_pressed"]
+[connection signal="on_trigger_up" from="XROrigin3D/RightHand/FunctionGazePointer/GodotPlusListenToControllerTrigger" to="XROrigin3D/RightHand/FunctionGazePointer" method="_button_released"]
 [connection signal="on_color_left_updated" from="MeshMap/UiLabQuadNodeToSurfaceColor" to="CanvasLayer/HBoxContainer/ColorRect" method="set_color"]
 [connection signal="on_color_right_updated" from="MeshMap/UiLabQuadNodeToSurfaceColor" to="CanvasLayer/HBoxContainer/ColorRect2" method="set_color"]
 [connection signal="on_left_line_sensor_color_updated" from="TwoWheelsCar" to="Code/UiLabIfRedTeleportTo" method="check_color"]
@@ -460,10 +501,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_viw8j")
 [connection signal="on_right_line_sensor_color_updated" from="TwoWheelsCar" to="CanvasLayer/HBoxContainer/ColorRect2" method="set_color"]
 [connection signal="on_texture_updated" from="TwoWheelsCar/Code/UiLab128x64Display" to="CanvasLayer/HBoxContainer/TextureRect2" method="set_texture"]
 
-[editable path="TwoWheelsCar"]
-[editable path="CanvasLayer/Control/PrefabShort128x64"]
 [editable path="XROrigin3D/LeftHand/LeftHand"]
 [editable path="XROrigin3D/LeftHand/LeftHand/Hand_low_L"]
 [editable path="XROrigin3D/RightHand/RightHand"]
 [editable path="XROrigin3D/RightHand/RightHand/Hand_low_R"]
+[editable path="TwoWheelsCar"]
+[editable path="CanvasLayer/Control/PrefabShort128x64"]
+[editable path="CanvasLayer/Control/PrefabShort128x64/Ratio Short 16x9/Hold16x9/RunCodeEditWithTarget"]
 [editable path="Student/StudentFromUrlNode/TwoWheelsCar"]
