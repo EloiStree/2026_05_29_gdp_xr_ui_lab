@@ -78,3 +78,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ra7wi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StudentArena/StaticBody3D" unique_id=1738206639]
 shape = SubResource("WorldBoundaryShape3D_ra7wi")
+
+[editable path="Center/PivotStartPlayer"]
