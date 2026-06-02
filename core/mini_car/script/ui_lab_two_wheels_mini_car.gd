@@ -18,6 +18,12 @@ signal on_rotation_quaternion_updated(new_rotation: Quaternion)
 signal on_rotation_euler_updated(new_rotation: Vector3)
 signal on_car_id_updated(new_car_id: int)
 
+## I am signal that request the game behind the car to fire something.
+## Read the manual of the current game for more information.
+signal on_fire_request()
+
+func fire():
+	on_fire_request.emit()
 
 func set_car_color(color:Color):
 	var color_no_alpha :Color = Color(color.r,color.g,color.b,1)

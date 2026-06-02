@@ -107,7 +107,7 @@ func is_target_has_variable(variable_name:String)->bool:
 ## Allows to set the variable of the target script if it exist.
 func set_variable_of_target_if_existing(variable_name:String, value:Variant):
 	if _target_node and is_target_has_variable(variable_name):
-		_target_node.set(variable_name,value) 
+		_target_node.set(variable_name,value)
 
 
 static func has_property_of_node(node: Node, property_name: String) -> bool:
@@ -157,7 +157,7 @@ static func get_all_nodes_in_childrens_recursive_from(node:Node)->Array[Node]:
 		var current = queue.pop_front()
 		for child in current.get_children():
 			result.append(child)
-			queue.append(child)	
+			queue.append(child)
 	return result
 	
 #endregion
@@ -193,7 +193,7 @@ signal on_fail_to_load_code(code:String)
 ## I am a variable that give the designer the choose if the node created must be 3D
 @export var _create_node_as_node_3d:bool=false
 
-@export_group("Modding/Debug")	
+@export_group("Modding/Debug")
 ## I am a variable that hold the node created with the player code.
 @export var _created_node_holding_code:Node
 
@@ -211,7 +211,7 @@ func unload_current_code():
 		## if it existe. kill it. I means... lets is free 
 		_created_node_holding_code.queue_free()
 		_created_node_holding_code = null
-	on_destroy_previous_node_holding_code_end.emit()		
+	on_destroy_previous_node_holding_code_end.emit()
 
 
 func is_url(text:String):
@@ -381,5 +381,22 @@ func reduce_text_size():
 		"font_size",
 		_code_edit.get_theme_font_size("font_size") - 1
 	)
-	
-	
+	#
+@export_category("Reload code")
+@export var key_code_to_reload_code:int=KEY_F1
+@export var use_key_code_to_reload_code:bool=true
+
+
+func _unhandled_input(event):
+	if not use_key_code_to_reload_code:
+		return 
+	if event is InputEventKey and event.pressed:
+		
+		print(
+			"keycode=", event.keycode,
+			" text=", event.as_text()
+		)
+
+		if event.keycode == key_code_to_reload_code:
+			print("F1 pressed")
+			reload_code_from_code_edit()

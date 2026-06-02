@@ -3,17 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://doc56d62vhfe7"
-path.s3tc="res://.godot/imported/Map.png-fbe026c1c8def3810b575a61df9e7875.s3tc.ctex"
 path.etc2="res://.godot/imported/Map.png-fbe026c1c8def3810b575a61df9e7875.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/2026_05_29_gdp_xr_ui_lab/core/quad_map/map/Map.png"
-dest_files=["res://.godot/imported/Map.png-fbe026c1c8def3810b575a61df9e7875.s3tc.ctex", "res://.godot/imported/Map.png-fbe026c1c8def3810b575a61df9e7875.etc2.ctex"]
+dest_files=["res://.godot/imported/Map.png-fbe026c1c8def3810b575a61df9e7875.etc2.ctex"]
 
 [params]
 

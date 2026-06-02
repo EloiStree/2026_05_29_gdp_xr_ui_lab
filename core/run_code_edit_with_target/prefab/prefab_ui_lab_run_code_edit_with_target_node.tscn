@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://gli0l3xvr201" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_clipboard_import.gd" id="2_bhib1"]
 [ext_resource type="Script" uid="uid://cy53rb5j1vt3" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_text_submit_at_ready.gd" id="3_u4lx0"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u4lx0"]
+
 [node name="RunCodeEditWithTarget" type="Control" unique_id=805216708 node_paths=PackedStringArray("_code_edit", "_run_button", "_stop_button", "_where_to_run_code")]
 layout_mode = 3
 anchors_preset = 15
@@ -17,6 +19,9 @@ _code_edit = NodePath("CodeEdit")
 _run_button = NodePath("HBoxContainer/Button Run")
 _stop_button = NodePath("HBoxContainer/Button Stop")
 _where_to_run_code = NodePath(".")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=995038425]
+stream = SubResource("AudioStreamRandomizer_u4lx0")
 
 [node name="CodeEdit" type="CodeEdit" parent="." unique_id=899396559]
 layout_mode = 1
@@ -80,13 +85,13 @@ func _on_received_target(target: Node):
 	car=target
 	car.set_wheels(1,1)
 	while (true):
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(1).timeout
 		randomize_array()
 		car.print_text(array,\"Hello world\")
 		draw()
 		if car.has_method(\"set_wheels\"):
-			# car.set_wheels(randf_range(-1,1),randf_range(-1,1))
-			pass
+			car.set_wheels(randf_range(-1,1),randf_range(-1,1))
+			car.fire()
 		
 
 func draw():
@@ -126,6 +131,11 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "+"
 
+[node name="ButtonReset" type="Button" parent="HBoxContainer" unique_id=1884582248]
+layout_mode = 2
+size_flags_vertical = 3
+text = "R"
+
 [node name="Button ClipIn" type="Button" parent="HBoxContainer" unique_id=1286114530]
 layout_mode = 2
 text = "Clipboard
@@ -147,11 +157,13 @@ size_flags_horizontal = 3
 text = " Run"
 autowrap_trim_flags = 192
 
+[connection signal="on_created_node" from="." to="AudioStreamPlayer3D" method="play" unbinds=1 binds= [0.0]]
 [connection signal="on_url_to_handle_by_third_party_script_detected" from="." to="CodeEdit/UiLabWebPageDownloader" method="set_web_page_and_download_directly"]
 [connection signal="on_text_downloaded" from="CodeEdit/UiLabWebPageDownloader" to="." method="set_code_in_code_edit_without_reload"]
 [connection signal="on_text_submit" from="CodeEdit/UiLabTextSubmitAtReady" to="." method="set_code_in_code_edit_without_reload"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonMoins" to="." method="reduce_text_size"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonPlus" to="." method="increase_text_size"]
+[connection signal="button_down" from="HBoxContainer/ButtonReset" to="CodeEdit/UiLabTextSubmitAtReady" method="emit_text_in_inspector"]
 [connection signal="button_down" from="HBoxContainer/Button ClipIn" to="HBoxContainer/Button ClipIn/UiLabClipboardImport" method="import_from_clipboard"]
 [connection signal="on_clipboard_import_request" from="HBoxContainer/Button ClipIn/UiLabClipboardImport" to="." method="set_code_in_code_edit_without_reload"]
 [connection signal="on_url_detected_on_last_import" from="HBoxContainer/Button ClipIn/UiLabClipboardImport" to="CodeEdit/UiLabWebPageDownloader" method="set_web_page_and_download_directly"]

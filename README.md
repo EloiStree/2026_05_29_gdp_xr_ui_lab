@@ -1,3 +1,8 @@
+
+```
+git submodule add https://github.com/EloiStree/2026_05_29_gdp_xr_ui_lab.git addons/2026_05_29_gdp_xr_ui_lab
+```
+
 # XR UI IDE Lab
 
 > Lab to play with UI in XR to create code IDE in Godot

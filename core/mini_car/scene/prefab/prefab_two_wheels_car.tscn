@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://dfri7so5l56vl" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_set_color_mesh_surface.gd" id="5_poy45"]
 [ext_resource type="Script" uid="uid://c0fhyyuv2gcbf" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/run_code_edit_with_target/script/ui_lab_follow_with_top_offset.gd" id="7_53jv7"]
 [ext_resource type="Script" uid="uid://co3jqywc008sv" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_sub_view_to_double_color.gd" id="8_ix454"]
+[ext_resource type="Script" uid="uid://hn0jwvay80ty" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/script/ui_lab_color_single_forward_bullet.gd" id="11_611vg"]
+[ext_resource type="PackedScene" uid="uid://djbjfwn5j78k3" path="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/scene/prefab/prefab_bullet_color_mesh.tscn" id="12_wwgm0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_poy45"]
 shading_mode = 0
@@ -220,12 +222,25 @@ metadata/_custom_type_script = "uid://co3jqywc008sv"
 [node name="DefaultCamera3DAnchorPoint" type="Node3D" parent="." unique_id=1265816448]
 transform = Transform3D(1, 0, 0, 0, 0.877774, 0.47907495, 0, -0.47907495, 0.877774, 0, 0.103085265, 0.09255478)
 
+[node name="SingleBullet" type="Node3D" parent="." unique_id=1961065447]
+
+[node name="UiLabColorSingleForwardBullet" type="Node" parent="SingleBullet" unique_id=2137727927 node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("11_611vg")
+bullet_scene = ExtResource("12_wwgm0")
+spawn_point = NodePath("../AnchorSpawn")
+speed_in_meter = 0.3
+metadata/_custom_type_script = "uid://hn0jwvay80ty"
+
+[node name="AnchorSpawn" type="Node3D" parent="SingleBullet" unique_id=2064818201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.049390867)
+
 [connection signal="on_color_request_for_the_car_style" from="." to="Body/Offset/Body/UiLabSetColorMeshSurface" method="set_color"]
-[connection signal="on_left_line_sensor_color_updated" from="." to="Body/Offset/LineColor/TextureColorLeft/Set Color Mesh Left" method="set_color"]
+[connection signal="on_fire_request" from="." to="SingleBullet/UiLabColorSingleForwardBullet" method="fire"]
 [connection signal="on_left_line_sensor_color_updated" from="." to="Code/UiLabRedTeleportToGameCenter" method="check_color"]
+[connection signal="on_left_line_sensor_color_updated" from="." to="Body/Offset/LineColor/TextureColorLeft/Set Color Mesh Left" method="set_color"]
 [connection signal="on_left_wheel_current_rotation_updated" from="." to="LeftWheelAnchor/PivotAnchor" method="set_current_angle_and_update"]
-[connection signal="on_right_line_sensor_color_updated" from="." to="Body/Offset/LineColor/TextureColorRight/Set Color Mesh Right" method="set_color"]
 [connection signal="on_right_line_sensor_color_updated" from="." to="Code/UiLabRedTeleportToGameCenter" method="check_color"]
+[connection signal="on_right_line_sensor_color_updated" from="." to="Body/Offset/LineColor/TextureColorRight/Set Color Mesh Right" method="set_color"]
 [connection signal="on_right_wheel_current_rotation_updated" from="." to="RightWheelAnchor/PivotAnchor" method="set_current_angle_and_update"]
 [connection signal="on_screen_display_128x64_print_request" from="." to="Code/UiLab128x64Display" method="print_text"]
 [connection signal="on_screen_display_128x64_set_request" from="." to="Code/UiLab128x64Display" method="set_screen_128x64_to"]

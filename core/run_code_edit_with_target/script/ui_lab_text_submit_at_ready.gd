@@ -12,4 +12,6 @@ func _ready() -> void:
 	if use_at_ready:
 		on_text_submit.emit(text)
 
+func emit_text_in_inspector():
+	on_text_submit.emit(text)
 	
