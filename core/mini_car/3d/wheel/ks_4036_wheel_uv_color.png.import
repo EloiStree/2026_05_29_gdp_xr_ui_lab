@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://byyxs3hu0327k"
 path.s3tc="res://.godot/imported/ks_4036_wheel_uv_color.png-5284a80d4c21ef6e153f1e65afe83549.s3tc.ctex"
-path.etc2="res://.godot/imported/ks_4036_wheel_uv_color.png-5284a80d4c21ef6e153f1e65afe83549.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/2026_05_29_gdp_xr_ui_lab/core/mini_car/3d/wheel/ks_4036_wheel_uv_color.png"
-dest_files=["res://.godot/imported/ks_4036_wheel_uv_color.png-5284a80d4c21ef6e153f1e65afe83549.s3tc.ctex", "res://.godot/imported/ks_4036_wheel_uv_color.png-5284a80d4c21ef6e153f1e65afe83549.etc2.ctex"]
+dest_files=["res://.godot/imported/ks_4036_wheel_uv_color.png-5284a80d4c21ef6e153f1e65afe83549.s3tc.ctex"]
 
 [params]
 
